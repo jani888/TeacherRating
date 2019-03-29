@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RatingType;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $teachers = auth()->user()->load('groups')->groups->pluck('teacher');
+        $rating_types = RatingType::all();
+        dd(['teachers' => $teachers, 'rating_types' => $rating_types]);
+        return view('home', ['teachers' => auth()->user()->teachers, 'rating_types' => $rating_types]);
     }
 }
