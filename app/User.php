@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'born_at', 'code'
+        'name', 'born_at', 'code', 'id'
     ];
 
     /**
@@ -37,11 +37,16 @@ class User extends Authenticatable
      */
     protected $dates = [
         'born_at',
+        'voted_at'
     ];
 
     protected $dateFormat = "Y-m-d";
 
     public function groups() {
         return $this->belongsToMany(Group::class);
+    }
+
+    public function hasVoted() {
+        return $this->voted_at != null;
     }
 }
