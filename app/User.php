@@ -33,7 +33,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'born_at' => 'date',
+    protected $dates = [
+        'born_at',
     ];
+
+    protected $dateFormat = "Y-m-d";
 }
