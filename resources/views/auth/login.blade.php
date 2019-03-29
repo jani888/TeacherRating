@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@push("scripts")
+
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -15,7 +22,7 @@
                             <label for="born_at" class="col-md-4 col-form-label text-md-right">{{ __('Születési dátum') }}</label>
 
                             <div class="col-md-6">
-                                <input id="born_at" type="text" class="form-control{{ $errors->has('born_at') ? ' is-invalid' : '' }}" name="born_at" value="{{ old('email') }}" required autofocus>
+                                <input id="born_at" class="p-2" name="born_at" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('born_at'))
                                     <span class="invalid-feedback" role="alert">
@@ -26,7 +33,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('OM azonosító') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -41,13 +48,6 @@
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
                             </div>
                         </div>
 
@@ -56,12 +56,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>
@@ -70,4 +64,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#born_at').datepicker({ format: 'yyyy-mm-dd' });
+</script>
+
 @endsection
