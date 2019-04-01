@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('password');
             $table->date('born_at');
-            $table->date('voted_at')->nullable();
+            $table->timestamp('voted_at')->nullable();
             $table->timestamps();
         });
     }

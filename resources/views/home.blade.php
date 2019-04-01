@@ -59,7 +59,7 @@
                         </table>
 
                       @endforeach
-
+                      <input type="submit" name="" value="Küldés">
                   </form>
                 </div>
             </div>

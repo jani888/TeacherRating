@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('rate', 'RatingController@create');
+Route::post('/rate', 'RatingController@create');
 
 Route::get('/teacher/{teacher}', 'TeacherController@show');

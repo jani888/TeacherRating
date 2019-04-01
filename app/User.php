@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use App\Models\Group;
 use App\Models\Teacher;
 use Illuminate\Notifications\Notifiable;
@@ -37,13 +38,20 @@ class User extends Authenticatable
      */
     protected $dates = [
         'born_at',
-        'voted_at'
     ];
 
     protected $dateFormat = "Y-m-d";
 
     public function groups() {
         return $this->belongsToMany(Group::class);
+    }
+
+    public function setVotedAtAttribute(Carbon $date){
+        $this->voted_at = $date->format('Y-m-d H:i:s');
+    }
+
+    public function getVotedAtAttribute($date){
+        return Carbon::parse($date);
     }
 
     public function hasVoted() {
