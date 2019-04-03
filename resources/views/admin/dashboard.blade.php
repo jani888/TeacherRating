@@ -1,8 +1,10 @@
+@extends('layouts.app')
 
+@section('content')
 
   <!-- Main content -->
   <div class="main-content">
-    
+
     <!-- Header -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
       <div class="container-fluid">
@@ -401,3 +403,5 @@
       </footer>
     </div>
   </div>
+
+@endsection
