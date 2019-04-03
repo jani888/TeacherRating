@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,8 +25,8 @@
     <link type="text/css" href="/assets/css/argon.css?v=1.0.0" rel="stylesheet">
 
 </head>
-<body class="h-100">
-      <main class="h-100 bg-default main-content">
+<body>
+      <main class="bg-default main-content">
 
         <!-- Top navbar -->
         <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
@@ -63,8 +63,37 @@
         </nav>
 
 
-            @yield('content')
-        </main>
+        @yield('content')
+
+        <!-- Footer -->
+        <footer class="footer mt-4">
+          <div class="container">
+            <div class="row align-items-center justify-content-xl-center">
+              <div class="col-xl-6">
+                <div class="copyright text-center text-xl-left text-muted">
+                  &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+                </div>
+              </div>
+              <div class="col-xl-6">
+                <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                  <li class="nav-item">
+                    <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+    </main>
 
 
     <!-- Argon Scripts -->
