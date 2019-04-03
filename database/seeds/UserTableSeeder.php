@@ -15,7 +15,6 @@ class UserTableSeeder extends Seeder
         User::create([
             'name' => 'admin',
             'password' => bcrypt('admin'),
-            'born_at' => '2018-01-01'
         ]);
     }
 }

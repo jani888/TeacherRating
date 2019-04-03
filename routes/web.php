@@ -15,7 +15,9 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Auth::routes();
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -24,7 +26,7 @@ Route::post('/rate', 'RatingController@create');
 Route::get('/teacher/{teacher}', 'TeacherController@show');
 
 Route::prefix('admin')->middleware('auth:admin')->group(function (){
-    Route::get('login', 'Auth\AdminLoginController@showLoginForm')->name('login');
-    Route::post('login', 'Auth\AdminLoginController@login');
-    Route::post('logout', 'Auth\AdminLoginController@logout')->name('logout');
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login');
+    Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });

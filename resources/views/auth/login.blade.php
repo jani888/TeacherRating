@@ -38,9 +38,9 @@
                   </div>
                   <input class="form-control" placeholder="Név" type="text" name="name" value="{{ old('name') }}" required autofocus>
 
-                  @if ($errors->has('born_at'))
+                  @if ($errors->has('name'))
                       <span class="invalid-feedback" role="alert">
-                          <strong>{{ $errors->first('born_at') }}</strong>
+                          <strong>{{ $errors->first('name') }}</strong>
                       </span>
                   @endif
 
