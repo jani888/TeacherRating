@@ -42,4 +42,8 @@ class User extends Authenticatable
     public function hasVoted() {
         return $this->voted_at != null;
     }
+
+    public function scopeVoted($query){
+        return $query->whereNotNull('voted_at');
+    }
 }
