@@ -26,7 +26,6 @@ class HomeController extends Controller
     {
         $teachers = auth()->user()->load('groups')->groups->pluck('teacher');
         $rating_types = RatingType::all();
-
         return view('home', ['teachers' => $teachers, 'rating_types' => $rating_types]);
     }
 }

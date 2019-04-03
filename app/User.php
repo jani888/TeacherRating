@@ -31,27 +31,12 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $dates = [
-        'born_at',
+        'voted_at'
     ];
-
-    protected $dateFormat = "Y-m-d";
 
     public function groups() {
         return $this->belongsToMany(Group::class);
-    }
-
-    public function setVotedAtAttribute(Carbon $date){
-        $this->voted_at = $date->format('Y-m-d H:i:s');
-    }
-
-    public function getVotedAtAttribute($date){
-        return Carbon::parse($date);
     }
 
     public function hasVoted() {
