@@ -12,7 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(AdminsTableSeeder::class);
 
         $groups = factory(\App\Models\Group::class)->times(5)->create();
 
