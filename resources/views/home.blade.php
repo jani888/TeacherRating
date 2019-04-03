@@ -56,7 +56,7 @@
                             <thead class="thead-light">
                               <th></th>
                               @for($i = 0; $i<10; $i++)
-                                <th class="p-1 align-middle"><p class="m-0">{{$i}}</p></th>
+                                <th class="p-1 align-middle text-center"><p class="m-0">{{$i}}</p></th>
                               @endfor
                             </thead>
 
@@ -64,7 +64,14 @@
                               <tr>
                                 <td>{{$rating_type->name}}</td>
                                   @for($i = 0; $i<10; $i++)
-                                  <td class="p-1 align-middle"><input type="radio" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]" value="{{$i}}"></td>
+                                  <td class="p-1 align-middle text-center">
+                                    <div class="tab-pane tab-example-result fade show active" style="margin-left: 8px">
+                                      <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="input_{{$i . $teacher->id . $rating_type->id}}" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]" value="{{$i}}">
+                                        <label class="custom-control-label" for="input_{{$i . $teacher->id . $rating_type->id}}"></label>
+                                      </div>
+                                    </div>
+                                  </td>
                                   @endfor
                               </tr>
                             @endforeach
