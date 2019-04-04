@@ -26,7 +26,7 @@
 
 </head>
 <body>
-    <main class="bg main-content">
+    <main class="main-content">
 
         <!-- Top navbar -->
         @include('layouts.navbar')
