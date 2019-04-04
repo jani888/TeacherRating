@@ -35,7 +35,7 @@
         @yield('content')
 
         <!-- Footer -->
-        @include('layouts.navbar')
+        @include('layouts.footer')
     </main>
 
 
