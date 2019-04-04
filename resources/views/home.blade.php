@@ -79,7 +79,10 @@
                         </div>
 
                       @endforeach
-                      <input type="submit" name="" value="Küldés">
+                      <p class="text-center text-warning">Elküldés előtt győződjön meg róla, hogy mindent megfelelően töltött ki, ugyanis az utólagos módosításra nincsen lehetőség!</p>
+                      <div class="d-flex justify-content-center justify-content-md-end">
+                          <input type="submit" class="btn btn-success m-3" name="" value="Küldés">
+                      </div>
                   </form>
                 </div>
             </div>
