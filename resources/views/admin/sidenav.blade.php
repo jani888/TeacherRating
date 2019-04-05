@@ -35,7 +35,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./examples/profile.html">
+          <a class="nav-link" href="{{ route('admin.profile') }}">
             <i class="ni ni-single-02 text-yellow"></i> Admin felhasználók
           </a>
         </li>

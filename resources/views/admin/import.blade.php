@@ -1,8 +1,7 @@
 @extends('admin.template')
 
 @section('header')
-<div class="mb-3 mb-lg-5">
-</div>
+  <div class="mb-0 mb-lg-3"></div>
 @endsection
 
 @section('content')
