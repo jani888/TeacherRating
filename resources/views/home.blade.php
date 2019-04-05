@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
-@section('content')
+
+@section('container')
+
+<!-- Top navbar -->
+@include('layouts.navbar')
+
 
 <div class="bg main-content">
 
   <!-- Header for the top background -->
-  <div class="header bg-gradient-primary py-7 py-lg-8">
+  <div class="bg-gradient-success py-7 py-lg-8 fixed-top" style="z-index: 0">
     <div class="mb-7"></div>
     <div class="separator separator-bottom separator-skew zindex-100">
       <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -14,13 +19,26 @@
     </div>
   </div>
 
-  <div class="container-fluid mt--8">
+  <div class="container-fluid mt-8">
       <div class="row justify-content-center">
           <div class="col-md-12">
               <div class="card">
-                  <div class="text-uppercase card-header border-0">Tanár értékelés</div>
+                @if(auth()->user()->hasVoted())
+                  <div class="m-8">
+                    <div class="alert alert-success text-center" role="alert">
+                        <p class="mb-0">Köszönjük, hogy szavazott!</p>
+                    </div>
+                  </div>
 
+                @else
+                  <div class="text-uppercase card-header border-0">Tanár értékelés</div>
+                  <div class="m-3 ml-3 ml-sm-6 ml-xl-8">
+                      <p><span class="font-weight-bold">Szempont 1:</span> Ez egy hosszabb leírás a szempontokról</p>
+                      <p><span class="font-weight-bold">Szempont 2:</span> Ez egy hosszabb leírás a szempontokról</p>
+                      <p><span class="font-weight-bold">Szempont 3:</span> Ez egy hosszabb leírás a szempontokról</p>
+                  </div>
                   <div>
+
                     <form class="" action="/rate" method="post">
                       @csrf
 
@@ -60,16 +78,25 @@
                           </div>
 
                         @endforeach
-                        <p class="text-center text-warning">Elküldés előtt győződjön meg róla, hogy mindent megfelelően töltött ki, ugyanis az utólagos módosításra nincsen lehetőség!</p>
+                        <p class="text-center text-danger">Elküldés előtt győződjön meg róla, hogy mindent megfelelően töltött ki, ugyanis az utólagos módosításra nincsen lehetőség!</p>
                         <div class="d-flex justify-content-center justify-content-md-end">
-                            <input type="submit" class="btn btn-success m-3" name="" value="Küldés">
+                            <button type="submit" class="btn btn-success m-3" name="button">
+                              Küldés
+                              <i class="ni ni-send"></i>
+                            </button>
                         </div>
                     </form>
                   </div>
+                @endif
+
               </div>
           </div>
       </div>
   </div>
 
 </div>
+
+<!-- Footer -->
+@include('layouts.footer')
+
 @endsection
