@@ -33,5 +33,6 @@ Route::prefix('admin')->group(function (){
     Route::middleware('auth:admin')->group(function (){
         Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
         Route::get('/import', 'Admin\ImportController@index')->name('admin.import');
+        Route::post('/import', 'Admin\ImportController@store');
     });
 });
