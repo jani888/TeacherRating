@@ -35,6 +35,10 @@ class User extends Authenticatable
         'voted_at'
     ];
 
+    public function scopeFindByCode($query, $code) {
+        return $query->where('code', $code)->first();
+    }
+
     public function groups() {
         return $this->belongsToMany(Group::class);
     }

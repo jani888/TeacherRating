@@ -8,6 +8,10 @@ class Teacher extends Model
 {
 
     public function groups() {
-        return $this->hasMany(Group::class);
+        return $this->belongsToMany(Group::class);
+    }
+
+    public function scopeFindByName($query, $name) {
+        return $query->where('name', $name)->first();
     }
 }

@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
 
-    public function teacher() {
-        return $this->belongsTo(Teacher::class);
+    public function teachers() {
+        return $this->belongsToMany(Teacher::class);
     }
 
     public function users() {
