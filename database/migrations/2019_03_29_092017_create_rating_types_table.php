@@ -16,6 +16,7 @@ class CreateRatingTypesTable extends Migration
         Schema::create('rating_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->text('description');
         });
     }
 
