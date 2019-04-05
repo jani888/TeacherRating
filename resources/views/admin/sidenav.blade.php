@@ -40,7 +40,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./examples/tables.html">
+          <a class="nav-link" href="{{ route('admin.import') }}">
             <i class="ni ni-bullet-list-67 text-blue"></i> Adatok feltöltése
           </a>
         </li>

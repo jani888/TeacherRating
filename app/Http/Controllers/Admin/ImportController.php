@@ -18,6 +18,7 @@ class ImportController extends Controller
     }
 
     public function store(Request $request) {
+        ini_set('max_execution_time', 30000);
         //Imports all students
         Excel::import(new UsersImport, $request->file('students'));
         //Imports all teachers
