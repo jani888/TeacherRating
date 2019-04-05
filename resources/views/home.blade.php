@@ -5,7 +5,7 @@
 <div class="bg main-content">
 
   <!-- Header for the top background -->
-  <div class="header bg-gradient-primary py-7 py-lg-8">
+  <div class="bg-gradient-success py-7 py-lg-8 fixed-top" style="z-index: 0">
     <div class="mb-7"></div>
     <div class="separator separator-bottom separator-skew zindex-100">
       <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div class="container-fluid mt--8">
+  <div class="container-fluid mt-8">
       <div class="row justify-content-center">
           <div class="col-md-12">
               <div class="card">
@@ -73,9 +73,12 @@
                           </div>
 
                         @endforeach
-                        <p class="text-center text-warning">Elküldés előtt győződjön meg róla, hogy mindent megfelelően töltött ki, ugyanis az utólagos módosításra nincsen lehetőség!</p>
+                        <p class="text-center text-danger">Elküldés előtt győződjön meg róla, hogy mindent megfelelően töltött ki, ugyanis az utólagos módosításra nincsen lehetőség!</p>
                         <div class="d-flex justify-content-center justify-content-md-end">
-                            <input type="submit" class="btn btn-success m-3" name="" value="Küldés">
+                            <button type="submit" class="btn btn-success m-3" name="button">
+                              Küldés
+                              <i class="ni ni-send"></i>
+                            </button>
                         </div>
                     </form>
                   </div>
