@@ -18,9 +18,22 @@
       <div class="row justify-content-center">
           <div class="col-md-12">
               <div class="card">
-                  <div class="text-uppercase card-header border-0">Tanár értékelés</div>
+                @if(auth()->user()->hasVoted())
+                  <div class="m-8">
+                    <div class="alert alert-success text-center" role="alert">
+                        <p class="mb-0">Köszönjük, hogy szavazott!</p>
+                    </div>
+                  </div>
 
+                @else
+                  <div class="text-uppercase card-header border-0">Tanár értékelés</div>
+                  <div class="m-3 ml-3 ml-sm-6 ml-xl-8">
+                      <p><span class="font-weight-bold">Szempont 1:</span> Ez egy hosszabb leírás a szempontokról</p>
+                      <p><span class="font-weight-bold">Szempont 2:</span> Ez egy hosszabb leírás a szempontokról</p>
+                      <p><span class="font-weight-bold">Szempont 3:</span> Ez egy hosszabb leírás a szempontokról</p>
+                  </div>
                   <div>
+
                     <form class="" action="/rate" method="post">
                       @csrf
 
@@ -66,6 +79,8 @@
                         </div>
                     </form>
                   </div>
+                @endif
+
               </div>
           </div>
       </div>
