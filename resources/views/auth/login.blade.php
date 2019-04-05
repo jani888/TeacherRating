@@ -21,7 +21,7 @@
         <div class="card bg-white shadow-lg border-0">
           <div class="card-body px-lg-5 py-lg-5">
             <div class="text-center text-muted mb-4">
-              <small>Jelentkezzen be a nevével, és az oktatási azonosítójával</small>
+              <p class="mb-0">Jelentkezzen be a nevével, és az oktatási azonosítójával</p>
             </div>
             <form role="form" action="{{ route('login') }}" method="post">
               @csrf
