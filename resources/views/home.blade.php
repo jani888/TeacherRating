@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
+
+@section('container')
+
+<!-- Top navbar -->
+@include('layouts.navbar')
+
 
 <div class="bg main-content">
 
@@ -90,4 +95,8 @@
   </div>
 
 </div>
+
+<!-- Footer -->
+@include('layouts.footer')
+
 @endsection

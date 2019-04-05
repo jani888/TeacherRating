@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 
-@section('content')
+@section('container')
+
+  <!-- Top navbar -->
+  @include('layouts.navbar')
+
   <!-- Header -->
   <div class="header bg-gradient-warning py-7 py-lg-8">
     <div class="mb-7"></div>
@@ -62,5 +66,8 @@
     </div>
   </div>
 </div>
+
+<!-- Footer -->
+@include('layouts.footer')
 
 @endsection

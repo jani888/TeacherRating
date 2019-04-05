@@ -28,14 +28,11 @@
 <body>
     <main class="main-content">
 
-        <!-- Top navbar -->
-        @include('layouts.navbar')
 
         <!-- Main content -->
-        @yield('content')
+        @yield('container')
 
-        <!-- Footer -->
-        @include('layouts.footer')
+
     </main>
 
 
