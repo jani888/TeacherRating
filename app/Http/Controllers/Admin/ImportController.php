@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Imports\GroupsImport;
+use App\Imports\SchoolClassesImport;
 use App\Imports\StudentGroupsImport;
 use App\Imports\TeachersImport;
 use App\Imports\UsersImport;
@@ -19,6 +20,8 @@ class ImportController extends Controller
 
     public function store(Request $request) {
         ini_set('max_execution_time', 30000);
+        //Import classes
+        Excel::import(new SchoolClassesImport, $request->file('students'));
         //Imports all students
         Excel::import(new UsersImport, $request->file('students'));
         //Imports all teachers

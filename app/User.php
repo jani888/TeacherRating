@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\SchoolClass;
 use Carbon\Carbon;
 use App\Models\Group;
 use App\Models\Teacher;
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'id', 'password'
+        'name', 'id', 'password', 'school_class_id'
     ];
 
     /**
@@ -41,6 +42,14 @@ class User extends Authenticatable
 
     public function groups() {
         return $this->belongsToMany(Group::class);
+    }
+
+    public function schoolClass() {
+        return $this->belongsTo(SchoolClass::class);
+    }
+
+    public function canVote() {
+        return $this->schoolClass->can_vote;
     }
 
     public function hasVoted() {
