@@ -5,25 +5,26 @@
 
 @section('container')
 
-  <!-- Side navbar -->
-  @include('admin.sidenav')
+    <!-- Side navbar -->
+    @include('admin.sidenav')
 
-  <div class="main-content">
+    <div class="main-content">
 
-    <!-- Header -->
-    <div class="header bg-gradient-warning pb-8 pt-5 pt-md-8">
-        <div class="container-fluid">
-            <div class="header-body">
-              @yield('header')
+        <!-- Header -->
+        <div class="header bg-gradient-warning pb-8 pt-5 pt-md-8">
+
+            <div class="container-fluid">
+                <div class="header-body">
+                    @yield('header')
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Main content -->
+        <!-- Main content -->
     @yield('content')
 
     <!-- Footer -->
-    @include('layouts.footer')
-  </div>
+        @include('layouts.footer')
+    </div>
 
 @endsection

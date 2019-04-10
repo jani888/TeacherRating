@@ -2,34 +2,54 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Imports\GroupsImport;
-use App\Imports\SchoolClassesImport;
-use App\Imports\StudentGroupsImport;
-use App\Imports\TeachersImport;
-use App\Imports\UsersImport;
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Jobs\GroupsImportJob;
+use App\Jobs\SchoolClassesImportJob;
+use App\Jobs\StudentGroupsImportJob;
+use App\Jobs\TeachersImportJob;
+use App\Jobs\UpdateProgressJob;
+use App\Jobs\UsersImportJob;
+use App\Models\ImportProgress;
+use Illuminate\Http\Request;
 
-class ImportController extends Controller
-{
+class ImportController extends Controller {
+
     public function index() {
         return view('admin.import');
     }
 
     public function store(Request $request) {
         ini_set('max_execution_time', 30000);
+        //Start a new import progress (progress: 0-5 -> 0-100%)
+        $importProgress = ImportProgress::create();
+
+        $paths = [
+            "students" => $request->file('students')->storeAs('imports', 'students.xslx'),
+            "teachers" => $request->file('teachers')->storeAs('imports', 'teachers.xslx'),
+            "groups"   => $request->file('groups')->storeAs('imports', 'groups.xslx'),
+        ];
+
         //Import classes
-        Excel::queueImport(new SchoolClassesImport, $request->file('students'))->chain([
+        SchoolClassesImportJob::withChain([
             //Imports all students
-            Excel::queueImport(new UsersImport, $request->file('students')),
+            UsersImportJob::withChain([
+                new UpdateProgressJob($importProgress),
+            ])->dispatch($paths['students']),
             //Imports all teachers
-            Excel::queueImport(new TeachersImport, $request->file('teachers')),
+            TeachersImportJob::withChain([
+                new UpdateProgressJob($importProgress),
+            ])->dispatch($paths['teachers']),
             //Imports teacher groups
-            Excel::queueImport(new GroupsImport, $request->file('teachers')),
+            GroupsImportJob::withChain([
+                new UpdateProgressJob($importProgress),
+            ])->dispatch($paths['teachers']),
             //Imports student groups
-            Excel::queueImport(new StudentGroupsImport, $request->file('groups'))
-        ]);
+            StudentGroupsImportJob::withChain([
+                new UpdateProgressJob($importProgress),
+            ])->dispatch($paths['groups']),
+            new UpdateProgressJob($importProgress),
+        ])->dispatch($paths['students']);
+        session()->flash('importID', $importProgress->id);
+        return back();
     }
 }

@@ -41,5 +41,6 @@ class RatingController extends Controller
         }
         auth()->user()->voted_at = Carbon::now();
         auth()->user()->save();
+        return back();
     }
 }
