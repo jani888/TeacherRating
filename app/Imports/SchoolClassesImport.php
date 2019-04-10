@@ -6,15 +6,17 @@ use App\Models\Group;
 use App\Models\SchoolClass;
 use App\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithProgressBar;
 use Maatwebsite\Excel\Row;
 
-class SchoolClassesImport implements OnEachRow, WithHeadingRow, WithChunkReading, ShouldQueue
+class SchoolClassesImport implements OnEachRow, WithHeadingRow, WithChunkReading, WithProgressBar
 {
-
+    use Importable;
     /**
      * @param Row $row
      */

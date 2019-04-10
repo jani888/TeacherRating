@@ -37,7 +37,7 @@ class User extends Authenticatable
     ];
 
     public function scopeFindByCode($query, $code) {
-        return $query->where('code', $code)->first();
+        return $query->where('password', bcrypt($code));
     }
 
     public function groups() {

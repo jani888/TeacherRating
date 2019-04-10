@@ -5,11 +5,16 @@ namespace App\Imports;
 use App\Models\Group;
 use App\Models\SchoolClass;
 use App\User;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithProgressBar;
 
-class UsersImport implements ToModel, WithHeadingRow
+class UsersImport implements ToModel, WithHeadingRow, WithChunkReading, WithProgressBar
 {
+    use Importable;
     /**
     * @param array $row
     *
@@ -27,5 +32,12 @@ class UsersImport implements ToModel, WithHeadingRow
             'password' => bcrypt($row['oktatasi_azonosito']),
             'school_class_id' => $school_class->id
         ]);
+    }
+
+    /**
+     * @return int
+     */
+    public function chunkSize(): int {
+        return 100;
     }
 }

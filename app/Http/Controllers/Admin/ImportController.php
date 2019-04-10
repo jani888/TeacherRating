@@ -21,14 +21,15 @@ class ImportController extends Controller
     public function store(Request $request) {
         ini_set('max_execution_time', 30000);
         //Import classes
-        Excel::import(new SchoolClassesImport, $request->file('students'));
-        //Imports all students
-        Excel::import(new UsersImport, $request->file('students'));
-        //Imports all teachers
-        Excel::import(new TeachersImport, $request->file('teachers'));
-        //Imports teacher groups
-        Excel::import(new GroupsImport, $request->file('teachers'));
-        //Imports student groups
-        Excel::import(new StudentGroupsImport, $request->file('groups'));
+        Excel::queueImport(new SchoolClassesImport, $request->file('students'))->chain([
+            //Imports all students
+            Excel::queueImport(new UsersImport, $request->file('students')),
+            //Imports all teachers
+            Excel::queueImport(new TeachersImport, $request->file('teachers')),
+            //Imports teacher groups
+            Excel::queueImport(new GroupsImport, $request->file('teachers')),
+            //Imports student groups
+            Excel::queueImport(new StudentGroupsImport, $request->file('groups'))
+        ]);
     }
 }

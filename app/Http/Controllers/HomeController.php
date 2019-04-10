@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $teachers = auth()->user()->load('groups')->groups->pluck('teachers')->flatten()->unique();
+        $teachers = auth()->user()->load('groups')->groups->pluck('teachers')->flatten()->unique('name');
         $rating_types = RatingType::all();
         return view('home', ['teachers' => $teachers, 'rating_types' => $rating_types]);
     }
