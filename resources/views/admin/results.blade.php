@@ -60,7 +60,7 @@
                           <thead class="thead-light">
                               <tr>
                                   <th scope="col">Tanár</th>
-                                  <th scope="col">Összes szavazat (db)</th>
+                                  <th scope="col">Összes értékelés (db)</th>
                                   <th scope="col"></th>
                               </tr>
                           </thead>

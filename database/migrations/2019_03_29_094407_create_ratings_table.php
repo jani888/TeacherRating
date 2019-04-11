@@ -18,6 +18,7 @@ class CreateRatingsTable extends Migration
             $table->integer('value');
             $table->integer('teacher_id');
             $table->integer('rating_type_id');
+            $table->integer('school_class_id');
             $table->timestamps();
         });
     }

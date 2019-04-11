@@ -35,6 +35,7 @@ class RatingController extends Controller
                 Rating::create([
                     'teacher_id' => $teacher_id,
                     'rating_type_id' => $rating_type_id,
+                    'school_class_id' => auth()->user()->school_class_id,
                     'value' => $rating
                 ]);
             }
