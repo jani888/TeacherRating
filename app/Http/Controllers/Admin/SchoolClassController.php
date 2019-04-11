@@ -15,8 +15,9 @@ class SchoolClassController extends Controller
     }
 
     public function store(Request $request) {
+        SchoolClass::query()->update(['can_vote' => false]);
         foreach($request->can_vote as $class_id => $can_vote){
-            SchoolClass::find($class_id)->update(['can_vote' => $can_vote == "on"]);
+            SchoolClass::find($class_id)->update(['can_vote' => true]);
         }
         $request->session()->flash('status', 'success');
         return back();

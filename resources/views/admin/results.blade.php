@@ -44,23 +44,47 @@
 
   <!-- Page content -->
   <div class="container-fluid mt--6">
-      <div class="row">
-          <div class="col-xl-12 mb-5 mb-xl-0">
-              <div class="card bg-gradient-default shadow">
-                  <div class="card-header bg-transparent">
+      <div class="row mt-5">
+          <div class="col-xl-8">
+              <div class="card shadow">
+                  <div class="card-header border-0">
                       <div class="row align-items-center">
                           <div class="col">
-                              <h6 class="text-uppercase text-light ls-1 mb-1">Elmúlt 5 nap</h6>
-                              <h2 class="text-white mb-0">Szavazatok</h2>
+                              <h3 class="mb-0">Tanáronként</h3>
                           </div>
                       </div>
                   </div>
-                  <div class="card-body">
-                      <!-- Chart -->
-                      <div class="chart">
-                          <!-- Chart wrapper -->
-                          <canvas id="chart-voters" class="chart-canvas" height="100"></canvas>
-                      </div>
+                  <div class="table-responsive">
+                      <!-- Projects table -->
+                      <table class="table align-items-center table-flush">
+                          <thead class="thead-light">
+                              <tr>
+                                  <th scope="col">Tanár</th>
+                                  <th scope="col">Összes szavazat (db)</th>
+                                  <th scope="col"></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @foreach($by_teachers_table as $row)
+                                  <tr>
+                                      <td>{{$row['name']}}</td>
+                                      <td>
+                                          {{$row['count']}}
+                                      </td>
+                                      <td>
+                                          <div class="d-flex align-items-center">
+                                              <span class="mr-2">{{$row['avg'] == '-' ? '-' : number_format($row['avg'], 2)}}</span>
+                                              <div>
+                                                  <div class="progress">
+                                                      <div class="progress-bar {{$row['avg'] == '-' ? "" : ($row['avg'] < 3 ? "bg-gradient-danger" : ($row['avg'] < 5 ? "bg-gradient-warning" : ($row['avg'] < 7.5 ? "bg-gradient-info" : "bg-gradient-success")))}}" role="progressbar" aria-valuenow="{{$row['avg'] == '-' ? 0 : number_format($row['avg'], 0)}}" aria-valuemin="0" aria-valuemax="10" style="width: {{$row['avg'] == '-' ? 0 :number_format($row['avg'], 0) * 10}}%;"></div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </td>
+                                  </tr>
+                              @endforeach
+                          </tbody>
+                      </table>
                   </div>
               </div>
           </div>
@@ -86,7 +110,7 @@
                               </tr>
                           </thead>
                           <tbody>
-                              @foreach($table as $row)
+                              @foreach($by_classes_table as $row)
                                   <tr>
                                       <td>{{$row['name']}}</td>
                                       <td>
@@ -112,43 +136,4 @@
       </div>
   </div>
 
-  <script>
-      var ctx = document.getElementById('chart-voters').getContext('2d');
-      var myChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-              labels: @json($chart['labels']),
-              datasets: [{
-                  label: 'Szavazatok',
-                  data: @json($chart['series']),
-                  backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                      'rgba(255, 159, 64, 0.2)'
-                  ],
-                  borderColor: [
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(54, 162, 235, 1)',
-                      'rgba(255, 206, 86, 1)',
-                      'rgba(75, 192, 192, 1)',
-                      'rgba(153, 102, 255, 1)',
-                      'rgba(255, 159, 64, 1)'
-                  ],
-                  borderWidth: 1
-              }]
-          },
-          options: {
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero: true
-                      }
-                  }]
-              }
-          }
-      });
-  </script>
 @endsection

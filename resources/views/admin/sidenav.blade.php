@@ -30,13 +30,23 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="./examples/maps.html">
-                        <i class="ni ni-planet text-orange"></i> Értékelési szempontok
+                    <a class="nav-link" href="{{route('admin.dashboard')}}">
+                        <i class="ni ni-planet text-orange"></i> Főoldal
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.profile') }}">
+                    <a class="nav-link" href="{{ route('admin.results') }}">
+                        <i class="ni ni-chart-bar-32 text-info"></i> Értékelési eredmények
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.admins') }}">
                         <i class="ni ni-single-02 text-yellow"></i> Admin felhasználók
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.rating_types')}}">
+                        <i class="ni ni-bullet-list-67 text-blue"></i> Értékelési szempontok
                     </a>
                 </li>
                 <li class="nav-item">
@@ -46,7 +56,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.import') }}">
-                        <i class="ni ni-bullet-list-67 text-blue"></i> Adatok importálása
+                        <i class="ni ni-cloud-upload-96 text-blue"></i> Adatok importálása
                     </a>
                 </li>
             </ul>

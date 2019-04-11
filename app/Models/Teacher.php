@@ -13,6 +13,10 @@ class Teacher extends Model
         return $this->belongsToMany(Group::class);
     }
 
+    public function ratings() {
+        return $this->hasMany(Rating::class);
+    }
+
     public function scopeFindByName($query, $name) {
         return $query->where('name', $name);
     }

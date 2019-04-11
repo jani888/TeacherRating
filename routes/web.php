@@ -26,6 +26,7 @@ Route::post('/rate', 'RatingController@create');
 Route::get('/teacher/{teacher}', 'TeacherController@show');
 
 Route::prefix('admin')->group(function (){
+    Route::get('/', 'Auth\AdminLoginController@showLoginForm')->name('admin.auth.login');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login');
     Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
@@ -35,7 +36,18 @@ Route::prefix('admin')->group(function (){
 
         Route::get('/import', 'Admin\ImportController@index')->name('admin.import');
 
-        Route::get('/profile', 'Admin\ProfileController@index')->name('admin.profile');
+        Route::get('/results', 'Admin\ResultsController@index')->name('admin.results');
+
+        Route::get('/admins', 'Admin\AdminController@index')->name('admin.admins');
+        Route::get('/admins/create', 'Admin\AdminController@create')->name('admin.admins.create');
+        Route::post('/admins', 'Admin\AdminController@store')->name('admin.admins.store');
+        Route::get('/admins/{admin}/edit', 'Admin\AdminController@edit')->name('admin.admins.edit');
+        Route::delete('/admins/{admin}', 'Admin\AdminController@delete')->name('admin.admins.delete');
+        Route::put('/admins/{admin}', 'Admin\AdminController@update')->name('admin.admins.update');
+
+        Route::get('/rating_types', 'Admin\RatingTypeController@index')->name('admin.rating_types');
+        Route::post('/rating_types', 'Admin\RatingTypeController@store');
+        Route::delete('/rating_types/{ratingType}', 'Admin\RatingTypeController@delete')->name('admin.rating_types.delete');
 
         Route::get('/classes', 'Admin\SchoolClassController@index')->name('admin.classes');
         Route::put('/classes', 'Admin\SchoolClassController@store');

@@ -3,19 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\SchoolClass;
+use App\Models\Teacher;
 use App\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class ResultsController extends Controller
 {
     public function index() {
         $stats = $this->getStats();
-        $chart = $this->getChartData();
-        $table = $this->getTableData();
-        return view('admin.dashboard', compact('stats', 'chart', 'table'));
+        //$chart = $this->getChartData();
+        $by_teachers_table = $this->getByTeachersTable();
+        $by_classes_table = $this->getByClassesTableData();
+        return view('admin.results', compact('stats', 'by_teachers_table', 'by_classes_table'));
     }
 
     private function getStats() {
@@ -43,7 +45,7 @@ class DashboardController extends Controller
         return compact('labels', 'series');
     }
 
-    private function getTableData() {
+    private function getByClassesTableData() {
         $school_classes = SchoolClass::with('students')->get();
         $table = $school_classes->map(function ($class){
             $class['students_count'] = $class->students->count();
@@ -53,5 +55,17 @@ class DashboardController extends Controller
         })->toArray();
 
         return $table;
+    }
+
+    private function getByTeachersTable() {
+        $teachers = Teacher::with('ratings')->get();
+        $results = $teachers->map(function (Teacher $teacher){
+            return [
+                'name' => $teacher->name,
+                'count' => $teacher->ratings->count(),
+                'avg' => $teacher->ratings->count() == 0 ? '-' : $teacher->ratings->sum('value') / $teacher->ratings->count()
+            ];
+        });
+        return $results;
     }
 }
