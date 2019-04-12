@@ -24,7 +24,7 @@ class DashboardController extends Controller
         return [
             'voted' => number_format($voted),
             'total' => number_format($total),
-            'voted_percentage' => number_format($voted / $total * 100) . " %"
+            'voted_percentage' => number_format( ($total == 0) ? 0 : $voted / $total * 100) . " %"
         ];
     }
 
