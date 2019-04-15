@@ -68,7 +68,6 @@
             <ul class="navbar-nav mb-md-3">
                 @auth
                     <li class="nav-item">
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -79,7 +78,6 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-                    </li>
                     </li>
                 @endauth
             </ul>

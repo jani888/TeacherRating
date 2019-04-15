@@ -9,7 +9,12 @@ use App\Jobs\StudentGroupsImportJob;
 use App\Jobs\TeachersImportJob;
 use App\Jobs\UpdateProgressJob;
 use App\Jobs\UsersImportJob;
+use App\Models\Group;
 use App\Models\ImportProgress;
+use App\Models\Rating;
+use App\Models\SchoolClass;
+use App\Models\Teacher;
+use App\User;
 use Illuminate\Http\Request;
 
 class ImportController extends Controller {
@@ -19,6 +24,11 @@ class ImportController extends Controller {
     }
 
     public function store(Request $request) {
+        User::truncate();
+        Teacher::truncate();
+        Group::truncate();
+        SchoolClass::truncate();
+        Rating::truncate();
         ini_set('max_execution_time', 30000);
         //Start a new import progress (progress: 0-5 -> 0-100%)
         $importProgress = ImportProgress::create();
