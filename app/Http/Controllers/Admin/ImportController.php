@@ -51,7 +51,7 @@ class ImportController extends Controller {
         (new UsersImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["students"]);
         (new TeachersImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["teachers"]);
         (new GroupsImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["teachers"]);
-        (new StudentGroupsImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["teachers"]);
+        (new StudentGroupsImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["groups"]);
 
         /*//Import classes
         SchoolClassesImportJob::withChain([
