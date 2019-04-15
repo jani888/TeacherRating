@@ -25,8 +25,8 @@
                             <tr>
                                 <td>{{$rating_type->name}}</td>
                                 <td>{{$rating_type->description}}</td>
-                                <td><a class="btn btn-sm text-primary" data-toggle="modal" data-target="#editModal{{$rating_type->id}}">Szerkesztés</a></td>
-                                <td><a class="btn btn-sm text-danger" data-toggle="modal" data-target="#deleteModal{{$rating_type->id}}">Törlés</a></td>
+                                <td><a class="text-primary" style="cursor:pointer" data-toggle="modal" data-target="#editModal{{$rating_type->id}}">Szerkesztés</a></td>
+                                <td><a class="text-danger" style="cursor:pointer" data-toggle="modal" data-target="#deleteModal{{$rating_type->id}}">Törlés</a></td>
                             </tr>
                             @include('admin.editRatingModal', ['rating_type'=>$rating_type])
                             @include('admin.deleteRatingModal', ['rating_type'=>$rating_type])

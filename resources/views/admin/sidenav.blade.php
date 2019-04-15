@@ -46,7 +46,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.rating_types')}}">
-                        <i class="ni ni-bullet-list-67 text-blue"></i> Értékelési szempontok
+                        <i class="ni ni-ui-04 text-red"></i> Értékelési szempontok
                     </a>
                 </li>
                 <li class="nav-item">
@@ -56,7 +56,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.import') }}">
-                        <i class="ni ni-cloud-upload-96 text-blue"></i> Adatok importálása
+                        <i class="ni ni-cloud-upload-96 text-success"></i> Adatok importálása
                     </a>
                 </li>
             </ul>
