@@ -24,7 +24,13 @@
     @yield('content')
 
     <!-- Footer -->
-        @include('layouts.footer')
+    @include('layouts.footer')
     </div>
+
+@endsection
+
+@section('custom-scripts')
+
+@yield('scripts')
 
 @endsection
