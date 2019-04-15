@@ -2,7 +2,7 @@
 
 @section('header')
   <!-- Header -->
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-xl-4 col-lg-4">
             <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
@@ -45,7 +45,7 @@
   <!-- Page content -->
   <div class="container-fluid mt--6">
       <div class="row mt-5">
-          <div class="col-xl-8">
+          <div class="col-xl-12">
               <div class="card shadow">
                   <div class="card-header border-0">
                       <div class="row align-items-center">
@@ -90,7 +90,7 @@
           </div>
       </div>
       <div class="row mt-5">
-          <div class="col-xl-8">
+          <div class="col-xl-12">
               <div class="card shadow">
                   <div class="card-header border-0">
                       <div class="row align-items-center">

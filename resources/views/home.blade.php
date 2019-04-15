@@ -107,4 +107,10 @@
     <!-- Footer -->
     @include('layouts.footer')
 
+    <style>
+      .custom-radio .custom-control-label::before{
+        border: 1px solid #a0a0a0;
+      }
+    </style>
+
 @endsection
