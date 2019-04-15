@@ -19,11 +19,13 @@
                             <th>Név</th>
                             <th>Leírás</th>
                             <th></th>
+                            <th></th>
                         </thead>
                         @foreach($rating_types as $rating_type)
                             <tr>
                                 <td>{{$rating_type->name}}</td>
                                 <td>{{$rating_type->description}}</td>
+                                <td><a href="rating_types/{{$rating_type->id}}"></a></td>
                                 <td>
                                     <form action="{{$rating_type->deleteUrl}}" method="post"> @csrf @method('delete')
                                         <button class="btn btn-link btn-sm"><i class="fa fa-pencil"></i> Törlés</button>

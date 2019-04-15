@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\GroupsImport;
+use App\Imports\SchoolClassesImport;
+use App\Imports\StudentGroupsImport;
+use App\Imports\TeachersImport;
+use App\Imports\UsersImport;
 use App\Jobs\GroupsImportJob;
 use App\Jobs\SchoolClassesImportJob;
 use App\Jobs\StudentGroupsImportJob;
@@ -15,7 +20,10 @@ use App\Models\Rating;
 use App\Models\SchoolClass;
 use App\Models\Teacher;
 use App\User;
+use Illuminate\Console\OutputStyle;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ImportController extends Controller {
 
@@ -39,7 +47,13 @@ class ImportController extends Controller {
             "groups"   => $request->file('groups')->storeAs('imports', 'groups.xslx'),
         ];
 
-        //Import classes
+        (new SchoolClassesImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["students"]);
+        (new UsersImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["students"]);
+        (new TeachersImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["teachers"]);
+        (new GroupsImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["teachers"]);
+        (new StudentGroupsImport)->withOutput(new OutputStyle(new ArrayInput([]), new ConsoleOutput()))->import($paths["groups"]);
+
+        /*//Import classes
         SchoolClassesImportJob::withChain([
             //Imports all students
             UsersImportJob::withChain([
@@ -59,7 +73,7 @@ class ImportController extends Controller {
             ])->dispatch($paths['groups']),
             new UpdateProgressJob($importProgress),
         ])->dispatch($paths['students']);
-        session()->flash('importID', $importProgress->id);
+        session()->flash('importID', $importProgress->id);*/
         return back();
     }
 }
