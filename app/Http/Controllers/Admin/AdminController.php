@@ -33,7 +33,7 @@ class AdminController extends Controller
     }
 
     public function update(Admin $admin, Request $request) {
-        $admin->update($request->only(['name', ['username']]));
+        $admin->update($request->only(['name', 'username']));
         return back();
     }
 }

@@ -25,33 +25,20 @@
                             <tr>
                                 <td>{{$rating_type->name}}</td>
                                 <td>{{$rating_type->description}}</td>
-                                <td><a href="rating_types/{{$rating_type->id}}"></a></td>
-                                <td>
-                                    <form action="{{$rating_type->deleteUrl}}" method="post"> @csrf @method('delete')
-                                        <button class="btn btn-link btn-sm"><i class="fa fa-pencil"></i> Törlés</button>
-                                    </form>
-                                </td>
+                                <td><a class="btn btn-sm text-primary" data-toggle="modal" data-target="#editModal{{$rating_type->id}}">Szerkesztés</a></td>
+                                <td><a class="btn btn-sm text-danger" data-toggle="modal" data-target="#deleteModal{{$rating_type->id}}">Törlés</a></td>
                             </tr>
+                            @include('admin.editRatingModal', ['rating_type'=>$rating_type])
+                            @include('admin.deleteRatingModal', ['rating_type'=>$rating_type])
                         @endforeach
                     </table>
-                    <hr>
-                    <h3 class="pl-3">Új létrehozása</h3>
-                    <form role="form" action="{{ route('admin.rating_types') }}" class="p-3" method="post">
-                        @csrf
-                        <div class="form-group mb-3">
-                            <div class="input-group input-group-alternative">
-                                <input class="form-control" placeholder="Új szempont neve" type="text" name="name" required autofocus>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <div class="input-group input-group-alternative">
-                                <textarea class="form-control" placeholder="Új szempont leírása" name="description" required autofocus></textarea>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" type="submit">Létrehozás</button>
-                    </form>
+                    <hr class="m-0">
+                    <a class="btn btn-primary text-white float-right m-3" data-toggle="modal" data-target="#addModal">Új hozzáadása</a>
                 </div>
             </div>
         </div>
     </div>
+
+    @include('admin.addRatingModal')
+
 @endsection
