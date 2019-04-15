@@ -20,4 +20,12 @@ class Teacher extends Model
     public function scopeFindByName($query, $name) {
         return $query->where('name', $name);
     }
+
+    public function getRatingCountAttribute() {
+        return $this->relations['ratings']->count();
+    }
+
+    public function getRatingAverageAttribute() {
+        return $this->relations['ratings']->count() == 0 ? 0 : $this->relations['ratings']->sum('value') / $this->relations['ratings']->count();
+    }
 }
