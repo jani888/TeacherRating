@@ -1,4 +1,4 @@
-<footer class="footer mt-4">
+<footer class="footer mt-4" style="z-index: -1">
   <div class="container">
     <div class="row align-items-center justify-content-xl-center">
       <div class="col-xl-6">

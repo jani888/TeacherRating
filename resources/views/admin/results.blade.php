@@ -60,7 +60,7 @@
                     <div class="row text-right">
                         <div class="col-md-3 float-right">
                             <div class="form-group pl-3">
-                                <input class="form-control" type="text" id="filter-teachers-input">
+                                <input class="form-control small" type="text" placeholder="Szűrés" id="filter-teachers-input">
                             </div>
                         </div>
                     </div>
