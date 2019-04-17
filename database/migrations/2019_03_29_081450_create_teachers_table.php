@@ -16,6 +16,7 @@ class CreateTeachersTable extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('rating_count')->default(0);
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
+    protected $with = ['ratings'];
 
     protected $fillable = ['name'];
 
@@ -19,10 +20,6 @@ class Teacher extends Model
 
     public function scopeFindByName($query, $name) {
         return $query->where('name', $name);
-    }
-
-    public function getRatingCountAttribute() {
-        return $this->relations['ratings']->count();
     }
 
     public function getRatingAverageAttribute() {
