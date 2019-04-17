@@ -37,6 +37,7 @@ Route::prefix('admin')->group(function (){
         Route::get('/import', 'Admin\ImportController@index')->name('admin.import');
 
         Route::get('/results', 'Admin\ResultsController@index')->name('admin.results');
+        Route::get('/results/export', 'Admin\ResultsController@export')->name('admin.export-results');
 
         Route::get('/admins', 'Admin\AdminController@index')->name('admin.admins');
         Route::get('/admins/create', 'Admin\AdminController@create')->name('admin.admins.create');

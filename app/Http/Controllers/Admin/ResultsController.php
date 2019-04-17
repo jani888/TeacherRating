@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\ResultsExport;
 use App\Http\Controllers\Controller;
 use App\Models\SchoolClass;
 use App\Models\Teacher;
 use App\User;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ResultsController extends Controller {
 
@@ -15,6 +17,11 @@ class ResultsController extends Controller {
         $resultsByTeachers = $this->getResultsByTeachers();
         $by_classes_table = $this->getByClassesTableData();
         return view('admin.results', compact('stats', 'resultsByTeachers', 'by_classes_table'));
+    }
+
+    public function export() {
+        ini_set('memory_limit', '1024M');
+        return Excel::download(new ResultsExport, 'eredmeny.xlsx');
     }
 
     private function getStats() {

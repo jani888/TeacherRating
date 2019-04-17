@@ -73,6 +73,7 @@ class ImportController extends Controller {
             new UpdateProgressJob($importProgress),
         ])->dispatch($paths['students']);
         session()->flash('importID', $importProgress->id);*/
+        session()->flash('status', 'success');
         return back();
     }
 }

@@ -52,6 +52,9 @@
                             <div class="col">
                                 <h3 class="mb-0">Tanáronként</h3>
                             </div>
+                            <div class="col text-right">
+                                <a href="{{route('admin.export-results')}}" class="btn bnt-icon btn-primary btn-sm text-white"><i class="fa fa-file-excel"></i> Táblázat exportálása</a>
+                            </div>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -61,8 +64,8 @@
                                 <tr>
                                     <th scope="col">Tanár</th>
                                     <th scope="col">Összes értékelő diák</th>
-                                    <th scope="col"></th>
-                                    <th></th>
+                                    <th scope="col">Átlag</th>
+                                    <th scope="col" class="text-center">Részletezés</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,7 +85,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <a class="dropdown-toggle" data-toggle="collapse" href=".rating_{{$teacher->id}}" aria-expanded="false">
                                             </a>
                                         </td>
