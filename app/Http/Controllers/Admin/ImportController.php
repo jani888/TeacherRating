@@ -8,12 +8,6 @@ use App\Imports\SchoolClassesImport;
 use App\Imports\StudentGroupsImport;
 use App\Imports\TeachersImport;
 use App\Imports\UsersImport;
-use App\Jobs\GroupsImportJob;
-use App\Jobs\SchoolClassesImportJob;
-use App\Jobs\StudentGroupsImportJob;
-use App\Jobs\TeachersImportJob;
-use App\Jobs\UpdateProgressJob;
-use App\Jobs\UsersImportJob;
 use App\Models\Group;
 use App\Models\ImportProgress;
 use App\Models\Rating;
@@ -32,6 +26,11 @@ class ImportController extends Controller {
     }
 
     public function store(Request $request) {
+        $this->validate($request, [
+            'students' => 'required|mimes:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'teachers' => 'required|mimes:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'groups' => 'required|mimes:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        ]);
         User::truncate();
         Teacher::truncate();
         Group::truncate();
