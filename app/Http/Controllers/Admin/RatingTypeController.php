@@ -23,4 +23,9 @@ class RatingTypeController extends Controller
         RatingType::create($request->only(['name', 'description']));
         return back();
     }
+
+    public function update(RatingType $ratingType, Request $request) {
+        $ratingType->update($request->only(['name', 'description']));
+        return back();
+    }
 }

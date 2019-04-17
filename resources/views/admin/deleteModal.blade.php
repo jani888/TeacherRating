@@ -26,7 +26,7 @@
                       @csrf @method('delete')
                       <button type="submit" class="btn btn-white">Törlés Mindenképpen</button>
                     </form>
-                    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Bezárás</button>
+                    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Mégsem</button>
                 </div>
 
             </div>
