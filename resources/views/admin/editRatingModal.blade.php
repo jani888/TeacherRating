@@ -10,7 +10,33 @@
       </button>
     </div>
     <div class="modal-body">
-      ...
+      <form role="form" action="{{ $rating_type->updateUrl }}" method="post">
+        @csrf
+        @method('put')
+        <div class="modal-body">
+          <div class="form-group mb-3">
+              <label>Rövid név:</label>
+              <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Rövid név" type="text" name="name" value="{{ $rating_type->name }}" required autofocus>
+              </div>
+          </div>
+          <div class="form-group mb-3">
+              <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Felhasználónév" type="text" name="username" value="{{ $rating_type->description }}" required autofocus>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezárás</button>
+          <button type="submit" class="btn btn-primary">Mentés</button>
+        </div>
+    </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezárás</button>

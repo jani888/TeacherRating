@@ -14,7 +14,8 @@
                 <h3 class="mb-0">Értékelési tájékoztató</h3>
               </div>
               <div class="mb-3 p-3">
-                <form class="" action="index.html" method="post">
+                <form class="" action="#" method="post">
+                  @csrf
                   <textarea class="form-control" name="name" rows="8" cols="80"></textarea>
                   <div class="d-flex justify-content-center justify-content-md-end mt-3">
                       <button class="btn btn-success" type="submit" name="button">
