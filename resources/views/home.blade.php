@@ -28,11 +28,19 @@
                                 <div class="alert alert-success text-center" role="alert">
                                     <p class="mb-0">Köszönjük, hogy szavazott!</p>
                                 </div>
+                                <div class="text-center">
+                                  <a class="btn btn-primary" href="{{ route('logout') }}"
+                                     onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                      <i class="ni ni-user-run"></i>
+                                      {{ __('Kijelentkezés') }}
+                                  </a>
+                                </div>
                             </div>
                         @elseif(!auth()->user()->canVote())
                             <div class="m-8">
-                                <div class="alert alert-success text-center" role="alert">
-                                    <p class="mb-0">Nem szavazhatsz</p>
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <p class="mb-0">A szavazás számodra le van tiltva!</p>
                                 </div>
                             </div>
                         @else
