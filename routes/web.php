@@ -55,5 +55,7 @@ Route::prefix('admin')->group(function (){
         Route::put('/classes', 'Admin\SchoolClassController@store');
 
         Route::post('/import', 'Admin\ImportController@store');
+
+        Route::put('/texts/{key}', 'Admin\TextController@set');
     });
 });
