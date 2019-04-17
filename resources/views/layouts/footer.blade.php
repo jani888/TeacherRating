@@ -9,16 +9,13 @@
       <div class="col-xl-6">
         <ul class="nav nav-footer justify-content-center justify-content-xl-end">
           <li class="nav-item">
-            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+            <p class="nav-link">Hidvégi János</p>
           </li>
           <li class="nav-item">
-            <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
+            <p class="nav-link">Kostyál Bálint</p>
           </li>
           <li class="nav-item">
-            <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+            <p class="nav-link">Varsányi Szabolcs</p>
           </li>
         </ul>
       </div>
