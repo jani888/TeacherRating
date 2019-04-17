@@ -40,7 +40,7 @@ class ResultsExport implements FromCollection, WithMapping, WithHeadings, Should
         return Teacher::with([
             'ratings',
             'ratings.ratingType',
-        ])->get()->map(function ($teacher) {
+        ])->orderBy('name')->get()->map(function ($teacher) {
             $teacher->ratings = $teacher->ratings->sortBy('ratingType.id')->groupBy('rating_type_id')->map(function ($row) {
                 return (object) [
                     'average' => $row->count() == 0 ? 0 : $row->sum('value') / $row->count(),

@@ -34,7 +34,6 @@ class DatabaseSeeder extends Seeder
 
         $rating_types = factory(\App\Models\RatingType::class)->times(10)->create();
 
-        factory(\App\Models\Rating::class)->times(500)->create();
-
+        \App\Models\Text::forceCreate(['key' => 'rating_info', 'value' => '']);
     }
 }
