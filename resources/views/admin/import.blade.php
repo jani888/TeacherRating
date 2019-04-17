@@ -15,7 +15,7 @@
                     <p>Az adatokat a program excell táblázat formájában kéri. A szükséges táblák a tanulók tábla a tantárgyfelosztás tábla és a tanulók csoportbeosztása tábla, melyek kiexportálhatók a Neptun-KRÉTA enaplóból. A három adatállományt egyszer kell feltölteni. A feltöltés ideje alatt ne végezzen más műveletet a weboldalon. A feltöltés végén a weboldal kiírja a sikeres feltöltés tényét. A feltöltés törli az előző adatállományt!</p>
                 </div>
                 <div class="p-4">
-                    <form class="" action="{{ route('admin.import') }}" method="POST" enctype="multipart/form-data">
+                    <form id="uploadForm" action="{{ route('admin.import') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-xl-4 col-md-12">
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center justify-content-md-end">
-                            <button class="btn btn-success" type="submit" name="button">
+                            <button class="btn btn-success" style="cursor: pointer" data-toggle="modal" data-target="#alertModal">
                                 Feltöltés
                                 <i class="text-big ni ni-cloud-upload-96"></i>
                             </button>
@@ -58,6 +58,9 @@
             </div>
         </div>
     </div>
+
+    @include('admin.importAlertModal')
+
 @endsection
 
 
