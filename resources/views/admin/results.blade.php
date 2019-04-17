@@ -57,9 +57,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row text-right">
+                        <div class="col-md-3 float-right">
+                            <div class="form-group pl-3">
+                                <input class="form-control" type="text" id="filter-teachers-input">
+                            </div>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <!-- Projects table -->
-                        <table class="table align-items-center">
+                        <table id="results-table" class="table align-items-center">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Tanár</th>
@@ -70,7 +77,7 @@
                             </thead>
                             <tbody>
                                 @foreach($resultsByTeachers as $teacher)
-                                    <tr>
+                                    <tr class="alma">
                                         <td>{{$teacher->name}}</td>
                                         <td>
                                             {{$teacher->rating_count}}
@@ -178,3 +185,16 @@
         }
     </style>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            $("#filter-teachers-input").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#results-table tr.alma").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+@endpush

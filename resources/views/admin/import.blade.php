@@ -80,7 +80,7 @@
 @endsection
 
 
-@section('scripts')
+@push('custom-scripts')
     <script>
         $("input[type=file]").change(function () {
             var fieldVal = $(this).val();
@@ -96,4 +96,4 @@
             }
         });
     </script>
-@endsection
+@endpush

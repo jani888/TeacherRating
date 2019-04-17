@@ -45,7 +45,7 @@
     <!-- Argon JS -->
     <script src="../assets/js/argon.js?v=1.0.0"></script>
 
-    @yield('custom-scripts')
+    @stack('custom-scripts')
 
 
 </body>
