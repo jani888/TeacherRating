@@ -13,4 +13,8 @@ class RatingType extends Model
     public function getDeleteUrlAttribute() {
         return route('admin.rating_types.delete', ['rating_type_id' => $this->id]);
     }
+
+    public function getUpdateUrlAttribute() {
+        return route('admin.rating_types.update', ['rating_type_id' => $this->id]);
+    }
 }
