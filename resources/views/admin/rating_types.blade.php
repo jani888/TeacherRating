@@ -9,11 +9,26 @@
 @section('content')
     <div class="contaner-fluid mt--7">
         <div class="container">
+            <div class="card shadow mb-4">
+              <div class="card-header">
+                <h3 class="mb-0">Értékelési tájékoztató</h3>
+              </div>
+              <div class="mb-3 p-3">
+                <form class="" action="index.html" method="post">
+                  <textarea class="form-control" name="name" rows="8" cols="80"></textarea>
+                  <div class="d-flex justify-content-center justify-content-md-end mt-3">
+                      <button class="btn btn-success" type="submit" name="button">
+                          Mentés
+                      </button>
+                  </div>
+                </form>
+              </div>
+            </div>
             <div class="card shadow">
                 <div class="card-header">
                     <h3 class="mb-0">Értékelési típusok</h3>
                 </div>
-                <div class="mb-8">
+                <div class="mb-5">
                     <table class="table">
                         <thead>
                             <th>Név</th>
