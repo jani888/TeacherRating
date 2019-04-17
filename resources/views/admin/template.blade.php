@@ -29,8 +29,8 @@
 
 @endsection
 
-@push('custom-scripts')
+@section('custom-scripts')
 
-@stack('scripts')
+@yield('scripts')
 
-@endpush
+@endsection
