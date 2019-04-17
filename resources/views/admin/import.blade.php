@@ -12,7 +12,7 @@
                     <h3 class="mb-0">Adatok feltöltése</h3>
                 </div>
                 <div class="p-3">
-                    <p>Az adatokat a program excell táblázat formájában kéri. A szükséges táblák a tanulók tábla a tantárgyfelosztás tábla és a tanulók csoportbeosztása tábla, melyek kiexportálhatók a Neptun-KRÉTA enaplóból. A három adatállományt egyszer kell feltölteni. A feltöltés ideje alatt ne végezzen más műveletet a weboldalon. A feltöltés végén a weboldal kiírja a sikeres feltöltés tényét. A feltöltés törli az előző adatállományt törli!</p>
+                    <p>Az adatokat a program excell táblázat formájában kéri. A szükséges táblák a tanulók tábla a tantárgyfelosztás tábla és a tanulók csoportbeosztása tábla, melyek kiexportálhatók a Neptun-KRÉTA enaplóból. A három adatállományt egyszer kell feltölteni. A feltöltés ideje alatt ne végezzen más műveletet a weboldalon. A feltöltés végén a weboldal kiírja a sikeres feltöltés tényét. A feltöltés törli az előző adatállományt!</p>
                 </div>
                 <div class="p-4">
                     <form class="" action="{{ route('admin.import') }}" method="POST" enctype="multipart/form-data">
