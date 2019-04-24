@@ -31,28 +31,30 @@
                     <h3 class="mb-0">Értékelési típusok</h3>
                 </div>
                 <div class="mb-5">
-                    <table class="table">
-                        <thead>
-                            <th>Név</th>
-                            <th>Leírás</th>
-                            <th></th>
-                            <th></th>
-                        </thead>
-                        @foreach($rating_types as $rating_type)
-                            <tr>
-                                <td>{{$rating_type->name}}</td>
-                                <td>{{$rating_type->description}}</td>
-                                <td>
-                                    <a class="text-primary" style="cursor:pointer" data-toggle="modal" data-target="#editModal{{$rating_type->id}}">Szerkesztés</a>
-                                </td>
-                                <td>
-                                    <a class="text-danger" style="cursor:pointer" data-toggle="modal" data-target="#deleteModal{{$rating_type->id}}">Törlés</a>
-                                </td>
-                            </tr>
-                            @include('admin.editRatingModal', ['rating_type'=>$rating_type])
-                            @include('admin.deleteRatingModal', ['rating_type'=>$rating_type])
-                        @endforeach
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <th>Név</th>
+                                <th>Leírás</th>
+                                <th></th>
+                                <th></th>
+                            </thead>
+                            @foreach($rating_types as $rating_type)
+                                <tr>
+                                    <td>{{$rating_type->name}}</td>
+                                    <td>{{$rating_type->description}}</td>
+                                    <td>
+                                        <a class="text-primary" style="cursor:pointer" data-toggle="modal" data-target="#editModal{{$rating_type->id}}">Szerkesztés</a>
+                                    </td>
+                                    <td>
+                                        <a class="text-danger" style="cursor:pointer" data-toggle="modal" data-target="#deleteModal{{$rating_type->id}}">Törlés</a>
+                                    </td>
+                                </tr>
+                                @include('admin.editRatingModal', ['rating_type'=>$rating_type])
+                                @include('admin.deleteRatingModal', ['rating_type'=>$rating_type])
+                            @endforeach
+                        </table>
+                    </div>
                     <hr class="m-0">
                     <a class="btn btn-primary text-white float-right m-3" data-toggle="modal" data-target="#addModal">Új hozzáadása</a>
                 </div>
