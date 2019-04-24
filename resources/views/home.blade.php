@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         @if(auth()->user()->hasVoted())
-                            <div class="m-8">
+                            <div class="m-3 m-md-8">
                                 <div class="alert alert-success text-center" role="alert">
                                     <p class="mb-0">Köszönjük, hogy szavazott!</p>
                                 </div>
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                         @elseif(!auth()->user()->canVote())
-                            <div class="m-8">
+                            <div class="m-3 m-md-8">
                                 <div class="alert alert-danger text-center" role="alert">
                                     <p class="mb-0">A szavazás számodra le van tiltva!</p>
                                 </div>
@@ -68,9 +68,9 @@
                                             <table class="table table-hover mb-4">
 
                                                 <thead class="thead-light">
-                                                    <th></th>
+                                                    <th class="d-none d-md-table-cell"></th>
                                                     @for($i = 0; $i<10; $i++)
-                                                        <th class="p-1 align-middle text-center d-none d-md-block">
+                                                        <th class="p-1 align-middle text-center d-none d-md-table-cell">
                                                             <p class="m-0">{{$i}}</p>
                                                         </th>
                                                     @endfor
@@ -83,7 +83,7 @@
                                                         </td>
 
                                                         @for($i = 0; $i<10; $i++)
-                                                            <td class="p-1 align-middle text-center  d-none d-md-block">
+                                                            <td class="p-1 align-middle text-center  d-none d-md-table-cell">
                                                                 <div class="tab-pane tab-example-result fade show active">
                                                                     <div class="custom-control custom-radio m-0">
                                                                         <input type="radio" class="custom-control-input" id="input_{{$i . $teacher->id . $rating_type->id}}" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]" value="{{$i}}">
@@ -93,6 +93,13 @@
                                                             </td>
                                                         @endfor
 
+                                                        <td class="d-table-cell d-md-none">
+                                                          <select name="ratings[{{$teacher->id}}][{{$rating_type->id}}]">
+                                                            @for ($i=0; $i < 10; $i++)
+                                                              <option value="{{$i}}">{{$i}}</option>
+                                                            @endfor
+                                                          </select>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </table>
