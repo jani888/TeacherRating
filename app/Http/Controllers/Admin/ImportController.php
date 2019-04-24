@@ -26,11 +26,25 @@ class ImportController extends Controller {
     }
 
     public function store(Request $request) {
-        $this->validate($request, [
-            'students' => 'required|mimes:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            'teachers' => 'required|mimes:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            'groups' => 'required|mimes:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        ]);
+        $validator = \Validator::make(
+            [
+                'students'      => $request->students,
+                'students_extension' => strtolower($request->students->getClientOriginalExtension()),
+                'teachers'      => $request->teachers,
+                'teachers_extension' => strtolower($request->teachers->getClientOriginalExtension()),
+                'groups'      => $request->groups,
+                'groups_extension' => strtolower($request->groups->getClientOriginalExtension()),
+            ],
+            [
+                'students'          => 'required',
+                'students_extension'      => 'required|in:xlsx,xls',
+                'teachers'          => 'required',
+                'teachers_extension'      => 'required|in:xlsx,xls',
+                'groups'          => 'required',
+                'groups_extension'      => 'required|in:xlsx,xls',
+            ]
+        );
+        $validator->validate();
         User::truncate();
         Teacher::truncate();
         Group::truncate();
