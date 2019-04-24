@@ -93,8 +93,8 @@
                                                             </td>
                                                         @endfor
 
-                                                        <td class="d-table-cell d-md-none">
-                                                          <select name="ratings[{{$teacher->id}}][{{$rating_type->id}}]">
+                                                        <td class="d-table-cell d-md-none" style="width: 100px">
+                                                          <select class="form-control form-control-sm" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]">
                                                             @for ($i=0; $i < 10; $i++)
                                                               <option value="{{$i}}">{{$i}}</option>
                                                             @endfor
