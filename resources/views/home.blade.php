@@ -70,8 +70,9 @@
                                                 <thead class="thead-light">
                                                     <th></th>
                                                     @for($i = 0; $i<10; $i++)
-                                                        <th class="p-1 align-middle text-center">
-                                                            <p class="m-0">{{$i}}</p></th>
+                                                        <th class="p-1 align-middle text-center d-none d-md-block">
+                                                            <p class="m-0">{{$i}}</p>
+                                                        </th>
                                                     @endfor
                                                 </thead>
 
@@ -82,7 +83,7 @@
                                                         </td>
 
                                                         @for($i = 0; $i<10; $i++)
-                                                            <td class="p-1 align-middle text-center">
+                                                            <td class="p-1 align-middle text-center  d-none d-md-block">
                                                                 <div class="tab-pane tab-example-result fade show active">
                                                                     <div class="custom-control custom-radio m-0">
                                                                         <input type="radio" class="custom-control-input" id="input_{{$i . $teacher->id . $rating_type->id}}" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]" value="{{$i}}">
