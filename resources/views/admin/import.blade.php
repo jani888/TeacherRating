@@ -12,20 +12,16 @@
                     <h3 class="mb-0">Adatok feltöltése</h3>
                 </div>
                 <div>
-                    @if(session()->has('status') && session('status') == 'success')
-                        <div class="m-3">
-                            <div class="alert alert-success text-center" role="alert">
-                                <p class="mb-0">Sikeres feltöltés!</p>
-                            </div>
-                        </div>
-                    @endif
-                    @if(session()->has('errors'))
-                        <div class="m-3">
-                            <div class="alert alert-danger text-center" role="alert">
-                                <p class="mb-0">Sikertelen feltöltés!</p>
-                            </div>
-                        </div>
-                    @endif
+                  <div class="m-3" style="display: none" id="success">
+                      <div class="alert alert-success text-center" role="alert">
+                          <p class="mb-0">Sikeres feltöltés!</p>
+                      </div>
+                  </div>
+                  <div class="m-3" style="display: none" id="error">
+                      <div class="alert alert-danger text-center" role="alert">
+                          <p class="mb-0">Sikertelen feltöltés!</p>
+                      </div>
+                  </div>
                 </div>
                 <div class="p-3">
                     <p>Az adatokat a program excell táblázat formájában kéri. A szükséges táblák a tanulók tábla a tantárgyfelosztás tábla és a tanulók csoportbeosztása tábla, melyek kiexportálhatók a Neptun-KRÉTA enaplóból. A három adatállományt egyszer kell feltölteni. A feltöltés ideje alatt ne végezzen más műveletet a weboldalon. A feltöltés végén a weboldal kiírja a sikeres feltöltés tényét. A feltöltés törli az előző adatállományt!</p>
@@ -39,7 +35,7 @@
                                 <!-- Divider -->
                                 <hr class="my-3">
                                 <div class="custom-file mb-3">
-                                    <input type="file" name="students" class="custom-file-input" id="validatedCustomFile" required>
+                                    <input type="file" name="students" class="custom-file-input" id="validatedCustomFile">
                                     <label class="custom-file-label" for="validatedCustomFile">Válasszon egy fájlt...</label>
                                 </div>
                             </div>
@@ -48,7 +44,7 @@
                                 <!-- Divider -->
                                 <hr class="my-3">
                                 <div class="custom-file mb-3">
-                                    <input type="file" name="teachers" class="custom-file-input" id="validatedCustomFile" required>
+                                    <input type="file" name="teachers" class="custom-file-input" id="validatedCustomFile">
                                     <label class="custom-file-label" for="validatedCustomFile">Válasszon egy fájlt...</label>
                                 </div>
                             </div>
@@ -57,7 +53,7 @@
                                 <!-- Divider -->
                                 <hr class="my-3">
                                 <div class="custom-file mb-3">
-                                    <input type="file" name="groups" class="custom-file-input" id="validatedCustomFile" required>
+                                    <input type="file" name="groups" class="custom-file-input" id="validatedCustomFile">
                                     <label class="custom-file-label" for="validatedCustomFile">Válasszon egy fájlt...</label>
                                 </div>
                             </div>
@@ -69,13 +65,31 @@
                                 <i class="text-big ni ni-cloud-upload-96"></i>
                             </button>
                         </div>
+                        @include('admin.importAlertModal')
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    @include('admin.importAlertModal')
+      <!-- Modal -->
+      <div class="modal fade" id="waitModal" tabindex="-1">
+        <div class="modal-dialog modal-success modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Feltöltés folyamatban</h5>
+            </div>
+            <div class="modal-body text-center m-3">
+              <p>Az adatok feltöltése folyamatban van, kérjük nem zárja be az oldalt, amíg a folyamat nem fejeződik be!</p>
+              <div class="m-3">
+                <i class="fas fa-circle-notch fa-4x fa-spin"></i>
+              </div>
+              <p class="text-small">Ez akár 5-10 percet is eltarthat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
 @endsection
 
@@ -94,6 +108,34 @@
             } else {
                 $(this).next(".custom-file-label").text("Válasszon egy filet...");
             }
+        });
+
+        $(document).ready(function (e) {
+           $("#uploadForm").on('submit',(function(e) {
+              e.preventDefault();
+              console.log(e);
+              $.ajax({
+                url: "{{ route('admin.import') }}",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function(){
+                  $("#alertModal").fadeOut();
+                  $("#waitModal").modal({backdrop: 'static', keyboard: false});
+                },
+                success: function(data){
+                  $("#success").fadeIn();
+                  $("#waitModal").modal("toggle");
+                  $("#uploadForm")[0].reset();
+                },
+                error: function(e){
+                  $("#error").fadeIn();
+                  $("#waitModal").modal("toggle");
+                }
+              });
+           }));
         });
     </script>
 @endpush
