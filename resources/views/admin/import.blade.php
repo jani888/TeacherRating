@@ -35,7 +35,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-xl-4 col-md-12">
-                                <p>Diákok</p>
+                                <p>Diákok (tanulók.xlsx)</p>
                                 <!-- Divider -->
                                 <hr class="my-3">
                                 <div class="custom-file mb-3">
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-12">
-                                <p>Tanárok</p>
+                                <p>Tanárok (tantárgyfelosztás.xlsx)</p>
                                 <!-- Divider -->
                                 <hr class="my-3">
                                 <div class="custom-file mb-3">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-12">
-                                <p>Csoportok</p>
+                                <p>Csoportok (tanuló_besorolás_adatok.xlsx)</p>
                                 <!-- Divider -->
                                 <hr class="my-3">
                                 <div class="custom-file mb-3">

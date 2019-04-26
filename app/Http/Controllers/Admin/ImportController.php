@@ -50,6 +50,8 @@ class ImportController extends Controller {
         Group::truncate();
         SchoolClass::truncate();
         Rating::truncate();
+        \DB::table('group_teacher')->truncate();
+        \DB::table('group_user')->truncate();
         ini_set('max_execution_time', 30000);
         //Start a new import progress (progress: 0-5 -> 0-100%)
         $importProgress = ImportProgress::create();

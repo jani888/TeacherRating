@@ -68,12 +68,13 @@
                                             <table class="table table-hover mb-4">
 
                                                 <thead class="thead-light">
-                                                    <th class="d-none d-md-table-cell"></th>
-                                                    @for($i = 0; $i<10; $i++)
+                                                    <th></th>
+                                                    <th></th>
+                                                    <!--@for($i = 0; $i<10; $i++)
                                                         <th class="p-1 align-middle text-center d-none d-md-table-cell">
                                                             <p class="m-0">{{$i}}</p>
                                                         </th>
-                                                    @endfor
+                                                    @endfor-->
                                                 </thead>
 
                                                 @foreach($rating_types as $rating_type)
@@ -82,7 +83,7 @@
                                                             <p class="mb-0">{{$rating_type->name}}</p>
                                                         </td>
 
-                                                        @for($i = 0; $i<10; $i++)
+                                                        <!--@for($i = 0; $i<10; $i++)
                                                             <td class="p-1 align-middle text-center  d-none d-md-table-cell">
                                                                 <div class="tab-pane tab-example-result fade show active">
                                                                     <div class="custom-control custom-radio m-0">
@@ -91,9 +92,9 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                        @endfor
+                                                        @endfor-->
 
-                                                        <td class="d-table-cell d-md-none" style="width: 100px">
+                                                        <td class="d-table-cell" style="width: 100px">
                                                           <select class="form-control form-control-sm" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]">
                                                             @for ($i=0; $i < 10; $i++)
                                                               <option value="{{$i}}">{{$i}}</option>
