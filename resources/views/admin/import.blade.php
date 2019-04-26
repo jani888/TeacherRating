@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center justify-content-md-end">
-                            <button class="btn btn-success" style="cursor: pointer" data-toggle="modal" data-target="#alertModal">
+                            <button type="button" class="btn btn-success" style="cursor: pointer" data-toggle="modal" data-target="#alertModal">
                                 Feltöltés
                                 <i class="text-big ni ni-cloud-upload-96"></i>
                             </button>
