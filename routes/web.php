@@ -48,6 +48,8 @@ Route::prefix('admin')->group(function (){
 
         Route::get('/rating_types', 'Admin\RatingTypeController@index')->name('admin.rating_types');
         Route::post('/rating_types', 'Admin\RatingTypeController@store');
+        Route::get('/rating_types/off', 'Admin\RatingTypeController@on');
+        Route::get('/rating_types/on', 'Admin\RatingTypeController@off');
         Route::delete('/rating_types/{ratingType}', 'Admin\RatingTypeController@delete')->name('admin.rating_types.delete');
         Route::put('/rating_types/{ratingType}', 'Admin\RatingTypeController@update')->name('admin.rating_types.update');
 

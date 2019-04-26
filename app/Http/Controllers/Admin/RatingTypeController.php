@@ -16,6 +16,14 @@ class RatingTypeController extends Controller
         return view('admin.rating_types', compact('rating_types', 'rating_info'));
     }
 
+    public function on() {
+        RatingType::get()->update(['on' => true]);
+    }
+
+    public function off() {
+        RatingType::get()->update(['on' => false]);
+    }
+
     public function delete(RatingType $ratingType) {
         $ratingType->delete();
         return back();
