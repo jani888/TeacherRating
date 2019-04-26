@@ -127,12 +127,16 @@
                 },
                 success: function(data){
                   $("#success").fadeIn();
-                  $("#waitModal").modal("toggle");
+                  setTimeout(() => {
+                    $("#waitModal").modal("hide");
+                  }, 500);
                   $("#uploadForm")[0].reset();
                 },
                 error: function(e){
                   $("#error").fadeIn();
-                  $("#waitModal").modal("toggle");
+                  setTimeout(() => {
+                    $("#waitModal").modal("hide");
+                  }, 500);
                 }
               });
            }));

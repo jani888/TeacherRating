@@ -17,12 +17,12 @@ class RatingTypeController extends Controller
     }
 
     public function on() {
-        RatingType::get()->update(['on' => true]);
+        \DB::table('school_classes')->update(['can_vote' => false]);
         return back();
     }
 
     public function off() {
-        RatingType::get()->update(['on' => false]);
+        \DB::table('school_classes')->update(['can_vote' => true]);
         return back();
     }
 
