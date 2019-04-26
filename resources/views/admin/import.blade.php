@@ -80,7 +80,7 @@
               <h5 class="modal-title" id="exampleModalLabel">Feltöltés folyamatban</h5>
             </div>
             <div class="modal-body text-center m-3">
-              <p>Az adatok feltöltése folyamatban van, kérjük nem zárja be az oldalt, amíg a folyamat nem fejeződik be!</p>
+              <p>Az adatok feltöltése folyamatban van, kérjük ne zárja be az oldalt, amíg a folyamat be nem fejeződött!</p>
               <div class="m-3">
                 <i class="fas fa-circle-notch fa-4x fa-spin"></i>
               </div>
