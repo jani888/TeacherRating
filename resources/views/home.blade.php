@@ -19,6 +19,7 @@
             </div>
         </div>
 
+
         <form class="" action="/rate" method="post">
         <div class="container-fluid mt-8">
             <div class="row">
@@ -61,7 +62,7 @@
 
                 </div>
                     @csrf
-
+                    @if(auth()->user()->canVote())
                     @foreach($teachers as $teacher)
                       <div class="col-xl-4 col-lg-6 col-md-12">
                         <div class="card mt-3 mb-3">
@@ -97,7 +98,8 @@
                                           @endfor-->
 
                                           <td class="d-table-cell" style="width: 100px">
-                                            <select class="form-control form-control-sm" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]">
+                                            <select class="form-control form-control-sm" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]" value="-">
+                                              <option>-</option>
                                               @for ($i=0; $i < 10; $i++)
                                                 <option value="{{$i}}">{{$i}}</option>
                                               @endfor
@@ -122,6 +124,7 @@
                         </div>
                       </div>
                     </div>
+                  @endif
             </div>
         </div>
       </form>
