@@ -57,7 +57,7 @@
                   </div>
                   <div class="card-body">
                       <!-- Chart -->
-                      <div class="chart">
+                      <div class="">
                           <!-- Chart wrapper -->
                           <canvas id="chart-voters" class="chart-canvas" height="100"></canvas>
                       </div>
