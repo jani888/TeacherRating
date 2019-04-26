@@ -186,7 +186,7 @@
     </style>
 @endsection
 
-@push('scripts')
+@push('custom-scripts')
     <script>
         $(document).ready(function(){
             $("#filter-teachers-input").on("keyup", function() {
