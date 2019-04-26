@@ -62,7 +62,7 @@
 
                 </div>
                     @csrf
-                    @if(auth()->user()->canVote())
+                    @if(!auth()->user()->hasVoted() && auth()->user()->canVote())
                     @foreach($teachers as $teacher)
                       <div class="col-xl-4 col-lg-6 col-md-12">
                         <div class="card mt-3 mb-3">
