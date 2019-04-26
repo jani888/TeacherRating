@@ -32,6 +32,7 @@ class RatingController extends Controller
             }), 404);
 
             foreach ($teacher_ratings as $rating_type_id => $rating){
+                if($rating == '-') continue;
                 RatingType::findOrFail($rating_type_id);
                 Rating::create([
                     'teacher_id' => $teacher_id,
