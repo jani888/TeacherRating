@@ -19,9 +19,10 @@
             </div>
         </div>
 
+        <form class="" action="/rate" method="post">
         <div class="container-fluid mt-8">
-            <div class="row justify-content-center">
-                <div class="col-md-12">
+            <div class="row">
+                <div class="col-12 mb-3">
                     <div class="card">
                         @if(auth()->user()->hasVoted())
                             <div class="m-3 m-md-8">
@@ -54,74 +55,76 @@
                                         <span class="font-weight-bold">{{$rating_type->name}}:</span> {{$rating_type->description}}
                                     </p>
                                 @endforeach
-
-                            </div>
-                            <div>
-
-                                <form class="" action="/rate" method="post">
-                                    @csrf
-
-                                    @foreach($teachers as $teacher)
-
-                                        <h3 class="p-2">{{$teacher->name}}</h3>
-                                        <div class="table-responsive">
-                                            <table class="table table-hover mb-4">
-
-                                                <thead class="thead-light">
-                                                    <th></th>
-                                                    <th></th>
-                                                    <!--@for($i = 0; $i<10; $i++)
-                                                        <th class="p-1 align-middle text-center d-none d-md-table-cell">
-                                                            <p class="m-0">{{$i}}</p>
-                                                        </th>
-                                                    @endfor-->
-                                                </thead>
-
-                                                @foreach($rating_types as $rating_type)
-                                                    <tr>
-                                                        <td class="text-wrap">
-                                                            <p class="mb-0">{{$rating_type->name}}</p>
-                                                        </td>
-
-                                                        <!--@for($i = 0; $i<10; $i++)
-                                                            <td class="p-1 align-middle text-center  d-none d-md-table-cell">
-                                                                <div class="tab-pane tab-example-result fade show active">
-                                                                    <div class="custom-control custom-radio m-0">
-                                                                        <input type="radio" class="custom-control-input" id="input_{{$i . $teacher->id . $rating_type->id}}" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]" value="{{$i}}">
-                                                                        <label class="custom-control-label" for="input_{{$i . $teacher->id . $rating_type->id}}"></label>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        @endfor-->
-
-                                                        <td class="d-table-cell" style="width: 100px">
-                                                          <select class="form-control form-control-sm" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]">
-                                                            @for ($i=0; $i < 10; $i++)
-                                                              <option value="{{$i}}">{{$i}}</option>
-                                                            @endfor
-                                                          </select>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </table>
-                                        </div>
-
-                                    @endforeach
-                                    <p class="text-center text-danger">Elküldés előtt győződjön meg róla, hogy mindent megfelelően töltött ki, ugyanis az utólagos módosításra nincsen lehetőség!</p>
-                                    <div class="d-flex justify-content-center justify-content-md-end">
-                                        <button type="submit" class="btn btn-success m-3" name="button">
-                                            Küldés
-                                            <i class="ni ni-send"></i>
-                                        </button>
-                                    </div>
-                                </form>
                             </div>
                         @endif
-
                     </div>
+
                 </div>
+                    @csrf
+
+                    @foreach($teachers as $teacher)
+                      <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="card mt-3 mb-3">
+                          <h3 class="p-2">{{$teacher->name}}</h3>
+                          <div class="table-responsive">
+                              <table class="table table-hover mb-4">
+
+                                  <thead class="thead-light">
+                                      <th></th>
+                                      <th></th>
+                                      <!--@for($i = 0; $i<10; $i++)
+                                          <th class="p-1 align-middle text-center d-none d-md-table-cell">
+                                              <p class="m-0">{{$i}}</p>
+                                          </th>
+                                      @endfor-->
+                                  </thead>
+
+                                  @foreach($rating_types as $rating_type)
+                                      <tr>
+                                          <td class="text-wrap">
+                                              <p class="mb-0">{{$rating_type->name}}</p>
+                                          </td>
+
+                                          <!--@for($i = 0; $i<10; $i++)
+                                              <td class="p-1 align-middle text-center  d-none d-md-table-cell">
+                                                  <div class="tab-pane tab-example-result fade show active">
+                                                      <div class="custom-control custom-radio m-0">
+                                                          <input type="radio" class="custom-control-input" id="input_{{$i . $teacher->id . $rating_type->id}}" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]" value="{{$i}}">
+                                                          <label class="custom-control-label" for="input_{{$i . $teacher->id . $rating_type->id}}"></label>
+                                                      </div>
+                                                  </div>
+                                              </td>
+                                          @endfor-->
+
+                                          <td class="d-table-cell" style="width: 100px">
+                                            <select class="form-control form-control-sm" name="ratings[{{$teacher->id}}][{{$rating_type->id}}]">
+                                              @for ($i=0; $i < 10; $i++)
+                                                <option value="{{$i}}">{{$i}}</option>
+                                              @endfor
+                                            </select>
+                                          </td>
+                                      </tr>
+                                  @endforeach
+                              </table>
+                          </div>
+                        </div>
+
+                      </div>
+                    @endforeach
+                    <div class="col-12">
+                      <div class="card p-4">
+                        <p class="text-center text-danger">Elküldés előtt győződjön meg róla, hogy mindent megfelelően töltött ki, ugyanis az utólagos módosításra nincsen lehetőség!</p>
+                        <div class="d-flex justify-content-center justify-content-md-end">
+                            <button type="submit" class="btn btn-success m-3" name="button">
+                                Küldés
+                                <i class="ni ni-send"></i>
+                            </button>
+                        </div>
+                      </div>
+                    </div>
             </div>
         </div>
+      </form>
 
     </div>
 
