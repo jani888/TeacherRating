@@ -38,11 +38,4 @@ class StudentGroupsImport implements OnEachRow, WithChunkReading, WithHeadingRow
         }
         $group->users()->attach($user->id);
     }
-
-    /**
-     * @return int
-     */
-    public function chunkSize(): int {
-        return 500;
-    }
 }
