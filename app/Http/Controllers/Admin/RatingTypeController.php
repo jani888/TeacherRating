@@ -16,13 +16,15 @@ class RatingTypeController extends Controller
         return view('admin.rating_types', compact('rating_types', 'rating_info'));
     }
 
-    public function on() {
+    public function on(Request $request) {
         \DB::table('school_classes')->update(['can_vote' => false]);
+        $request->session()->flash('status', 'success');
         return back();
     }
 
-    public function off() {
+    public function off(Request $request) {
         \DB::table('school_classes')->update(['can_vote' => true]);
+        $request->session()->flash('status', 'success');
         return back();
     }
 
