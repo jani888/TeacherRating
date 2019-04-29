@@ -48,9 +48,9 @@
                         @else
                             <div class="text-uppercase card-header border-0">Tanár értékelés</div>
                             <div class="m-3 ml-3 ml-sm-6 ml-xl-8">
-                                <p class="text-primary">
-                                    {{$rating_info}}
-                                </p>
+                              <pre class="text-primary">{{$rating_info}}</pre>
+
+
                                 @foreach($rating_types as $rating_type)
                                     <p>
                                         <span class="font-weight-bold">{{$rating_type->name}}:</span> {{$rating_type->description}}
