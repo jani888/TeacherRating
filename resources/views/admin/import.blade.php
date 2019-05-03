@@ -133,6 +133,7 @@
                   $("#waitModal").modal({backdrop: 'static', keyboard: false});
                 },
                 success: function(data){
+                  $(".custom-file-label").text("Válasszon egy filet...");
                   if (data==="warning") { //Some small error occured
                     $("#warning").fadeIn();
                   }
