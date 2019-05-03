@@ -27,6 +27,12 @@
     <!-- Argon CSS -->
     <link type="text/css" href="/assets/css/argon.css?v=1.0.0" rel="stylesheet">
 
+    <style>
+      *{
+        /*animation: fa-spin 5s 1 ease-in-out;*/
+      }
+    </style>
+
 </head>
 <body>
     <main class="main-content">

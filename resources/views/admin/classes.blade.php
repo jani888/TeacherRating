@@ -21,11 +21,19 @@
                         </div>
                     @endif
 
+
                     <div class="m-3">
                       <a href="rating_types/on" class="btn btn-success"> Összes bekapcsolása</a>
                       <a href="rating_types/off" class="btn btn-warning"> Összes kikapcsolása</a>
                     </div>
                     <form action="{{route('admin.classes')}}" method="post">
+                      <div class="m-3 float-left">
+                        <p class="text-danger">Az osztályok módosítása után a változtatásokat menteni kell!</p>
+                      </div>
+                      <div class="float-right pr-5">
+                        <button class="btn btn-primary m-3" type="submit">Mentés</button>
+                      </div>
+
                         @csrf
                         @method('PUT')
                         <table class="table">
