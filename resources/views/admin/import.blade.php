@@ -22,9 +22,16 @@
                           <p class="mb-0">Sikertelen feltöltés!</p>
                       </div>
                   </div>
+                  <div class="m-3" style="display: none" id="warning">
+                      <div class="alert alert-warning text-center" role="alert">
+                          <p class="mb-0">Hiba a feltöltött fájlban!</p>
+                      </div>
+                  </div>
                 </div>
-                <div class="p-3">
+                <div class="p-3 text-justify">
                     <p>Az adatokat a program excell táblázat formájában kéri. A szükséges táblák a tanulók tábla a tantárgyfelosztás tábla és a tanulók csoportbeosztása tábla, melyek kiexportálhatók a Neptun-KRÉTA enaplóból. A három adatállományt egyszer kell feltölteni. A feltöltés ideje alatt ne végezzen más műveletet a weboldalon. A feltöltés végén a weboldal kiírja a sikeres feltöltés tényét. A feltöltés törli az előző adatállományt!</p>
+                    <p>Az értékelés alól mentesített csoportokat a feltöltésre kerülő adatállományból a feltöltés előtt manuálisan el kell távolítani.</p>
+                    <p>A rendszerbe való feltöltés előtt a Neptun-KRÉTA rendszerből exportált adatállományokat Excel-ben meg kell nyitni majd a "Mentés másként" opció segítségével újra el kell menteni. A rendszerbe az így létrejövő új fájlt kell feltölteni.</p>
                 </div>
                 <div class="p-4">
                     <form id="uploadForm" action="{{ route('admin.import') }}" method="POST" enctype="multipart/form-data">
@@ -126,7 +133,13 @@
                   $("#waitModal").modal({backdrop: 'static', keyboard: false});
                 },
                 success: function(data){
-                  $("#success").fadeIn();
+                  if (data==="warning") { //Some small error occured
+                    $("#warning").fadeIn();
+                  }
+                  else{
+                    $("#success").fadeIn();
+                  }
+
                   setTimeout(() => {
                     $("#waitModal").modal("hide");
                   }, 500);

@@ -117,7 +117,7 @@
                       <div class="card p-4">
                         <p class="text-center text-danger">Elküldés előtt győződjön meg róla, hogy mindent megfelelően töltött ki, ugyanis az utólagos módosításra nincsen lehetőség!</p>
                         <div class="d-flex justify-content-center justify-content-md-end">
-                            <button type="submit" class="btn btn-success m-3" name="button">
+                            <button type="button" class="btn btn-success" style="cursor: pointer" data-toggle="modal" data-target="#userSendModal">
                                 Küldés
                                 <i class="ni ni-send"></i>
                             </button>
@@ -127,6 +127,8 @@
                   @endif
             </div>
         </div>
+
+        @include('sendModal')
       </form>
 
     </div>
