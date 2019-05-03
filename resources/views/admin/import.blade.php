@@ -24,7 +24,7 @@
                   </div>
                   <div class="m-3" style="display: none" id="warning">
                       <div class="alert alert-warning text-center" role="alert">
-                          <p class="mb-0">Hiba a feltöltött file-ban!</p>
+                          <p class="mb-0">Hiba a feltöltött fájlban!</p>
                       </div>
                   </div>
                 </div>
@@ -139,7 +139,7 @@
                   else{
                     $("#success").fadeIn();
                   }
-                  
+
                   setTimeout(() => {
                     $("#waitModal").modal("hide");
                   }, 500);
