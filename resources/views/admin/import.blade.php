@@ -22,6 +22,11 @@
                           <p class="mb-0">Sikertelen feltöltés!</p>
                       </div>
                   </div>
+                  <div class="m-3" style="display: none" id="warning">
+                      <div class="alert alert-warning text-center" role="alert">
+                          <p class="mb-0">Hiba a feltöltött file-ban!</p>
+                      </div>
+                  </div>
                 </div>
                 <div class="p-3 text-justify">
                     <p>Az adatokat a program excell táblázat formájában kéri. A szükséges táblák a tanulók tábla a tantárgyfelosztás tábla és a tanulók csoportbeosztása tábla, melyek kiexportálhatók a Neptun-KRÉTA enaplóból. A három adatállományt egyszer kell feltölteni. A feltöltés ideje alatt ne végezzen más műveletet a weboldalon. A feltöltés végén a weboldal kiírja a sikeres feltöltés tényét. A feltöltés törli az előző adatállományt!</p>
@@ -129,15 +134,16 @@
                 },
                 success: function(data){
                   if (data==="warning") { //Some small error occured
-
+                    $("#warning").fadeIn();
                   }
                   else{
                     $("#success").fadeIn();
-                    setTimeout(() => {
-                      $("#waitModal").modal("hide");
-                    }, 500);
-                    $("#uploadForm")[0].reset();
                   }
+                  
+                  setTimeout(() => {
+                    $("#waitModal").modal("hide");
+                  }, 500);
+                  $("#uploadForm")[0].reset();
                 },
                 error: function(e){
                   $("#error").fadeIn();
