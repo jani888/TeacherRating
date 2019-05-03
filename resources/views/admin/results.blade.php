@@ -87,7 +87,7 @@
                                                 <span class="mr-2">{{number_format($teacher->ratingAverage, 2)}}</span>
                                                 <div>
                                                     <div class="progress">
-                                                        <div class="progress-bar {{($teacher->ratingAverage < 3 ? "bg-gradient-danger" : ($teacher->ratingAverage < 5 ? "bg-gradient-warning" : ($teacher->ratingAverage < 7.5 ? "bg-gradient-info" : "bg-gradient-success")))}}" role="progressbar" aria-valuenow="{{$teacher->ratingAverage ? 0 : number_format($teacher->resultsAverage, 0)}}" aria-valuemin="0" aria-valuemax="10" style="width: {{number_format($teacher->ratingAverage, 0) * 10}}%;"></div>
+                                                        <div class="progress-bar {{($teacher->ratingAverage < 3 ? "bg-gradient-danger" : ($teacher->ratingAverage < 5 ? "bg-gradient-warning" : ($teacher->ratingAverage < 7.5 ? "bg-gradient-info" : "bg-gradient-success")))}}" role="progressbar" aria-valuenow="{{$teacher->ratingAverage ? 0 : number_format($teacher->resultsAverage, 0)}}" aria-valuemin="0" aria-valuemax="9" style="width: {{number_format($teacher->ratingAverage, 0) * 11.11}}%;"></div>
                                                     </div>
                                                 </div>
                                             </div>
