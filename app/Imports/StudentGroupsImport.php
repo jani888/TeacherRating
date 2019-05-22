@@ -20,17 +20,26 @@ use Maatwebsite\Excel\Row;
 class StudentGroupsImport implements OnEachRow, WithChunkReading, WithHeadingRow, WithProgressBar
 {
     use Importable;
+
+    protected $users, $groups;
+
     /**
      * @param Row $row
      */
+
+    public function __construct() {
+        $this->users = User::all();
+        $this->groups = Group::all();
+    }
+
     public function onRow(Row $row) {
         if($row->toArray()['kisorolas_datum'] != null){
             //Már kiiratkozott
             return false;
         }
         //row[1]: user name
-        $user = User::where('name', $row->toArray()['tanulo_neve'])->first();
-        $group = Group::where('name', $row->toArray()['osztaly_csoport'])->first();
+        $user = $this->users->firstWhere('code', $row->toArray()['tanulo_oktatasi_azonosito']);
+        $group = $this->groups->firstWhere('name', $row->toArray()['osztaly_csoport'])->first();
         if($group == null){
             //Csoport megszűnt
             //todo: figyelmeztetni az users h lehet h rossz a fájl

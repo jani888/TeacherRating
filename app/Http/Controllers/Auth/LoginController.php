@@ -44,14 +44,9 @@ class LoginController extends Controller
     }
 
     protected function attemptLogin(Request $request){
-        $users = \App\User::where('name', $request->name)->get();
-	foreach($users as $user){
-	    if(\Hash::check($request->password, $user->password)){
-		auth()->login($user);
-		return true;
-	    }
-	}
-	return false;
+        $user = \App\User::where('name', $request->name)->where('code', $request->password)->first();
+        auth()->login($user);
+        return $user != null;
     }
 }
 
