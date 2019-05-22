@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -41,4 +42,16 @@ class LoginController extends Controller
     {
         return 'name';
     }
+
+    protected function attemptLogin(Request $request){
+        $users = \App\User::where('name', $request->name)->get();
+	foreach($users as $user){
+	    if(\Hash::check($request->password, $user->password)){
+		auth()->login($user);
+		return true;
+	    }
+	}
+	return false;
+    }
 }
+

@@ -45,8 +45,9 @@
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                  </div>
-                  <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Felhasználónév" type="password">
+                  </div> 
+		  <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Jelszó" type="password">
+		  <!-- <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Felhasználónév" type="password"> -->
 
                   @if ($errors->has('password'))
                       <span class="invalid-feedback" role="alert">
