@@ -23,7 +23,7 @@ class ResultsExport implements FromCollection, WithMapping, WithHeadings, Should
     public function map($teacher): array {
         $row = [];
         $row[] = $teacher->name;
-        $row[] = $teacher->rating_count;
+        $row[] = $teacher->ratings->max(function($rating){ return $rating->count; });
         $row[] = number_format($teacher->ratingAverage, 2);
         $ratings = $teacher->ratings->pluck('average')->toArray();
         $ratings = array_map(function ($rating) {

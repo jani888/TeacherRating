@@ -80,7 +80,7 @@
                                     <tr class="alma">
                                         <td>{{$teacher->name}}</td>
                                         <td>
-                                            {{$teacher->rating_count}}
+                                            {{$teacher->ratings->max(function($rating){return $rating->count;})}}
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
