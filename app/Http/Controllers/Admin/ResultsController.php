@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class ResultsController extends Controller {
 
     public function index() {
+	ini_set("memory_limit", "2048M");
         $stats = $this->getStats();
         //$chart = $this->getChartData();
         $resultsByTeachers = $this->getResultsByTeachers();
