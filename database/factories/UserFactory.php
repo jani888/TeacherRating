@@ -19,5 +19,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'password' => bcrypt($faker->word),
+        'code' => $faker->numberBetween(100000, 9999999),
+        'born_at' => $faker->date('Y-m-d')
     ];
 });

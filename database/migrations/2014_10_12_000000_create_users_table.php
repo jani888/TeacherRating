@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('password');
+            $table->string('code');
+            $table->date('born_at');
             $table->integer('school_class_id');
             $table->timestamp('voted_at')->nullable();
             $table->timestamps();

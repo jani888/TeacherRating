@@ -30,6 +30,8 @@ class UsersImport implements ToModel, WithHeadingRow, WithChunkReading, WithProg
         return new User([
             'name' => $row['nev'],
             'password' => bcrypt($row['oktatasi_azonosito']),
+            'code' => $row['oktatasi_azonosito'],
+            'born_at' => $row['szuletesi_ido'],
             'school_class_id' => $school_class->id
         ]);
     }

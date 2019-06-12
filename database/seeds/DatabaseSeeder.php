@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'admin',
             'password' => bcrypt('admin'),
+            'code' => 'admin',
+            'born_at' => '2001.01.01',
             'school_class_id' => $classes->random()->id
         ]);
 

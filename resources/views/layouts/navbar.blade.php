@@ -11,7 +11,7 @@
         <a class="text-white pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="media align-items-center">
             <div class="media-body ml-2 ">
-              <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
+              <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }} ({{Auth::user()->schoolClass()->first()->name}})</span>
             </div>
           </div>
         </a>
