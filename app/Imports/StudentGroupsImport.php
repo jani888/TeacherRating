@@ -39,7 +39,7 @@ class StudentGroupsImport implements OnEachRow, WithChunkReading, WithHeadingRow
         }
         //row[1]: user name
         $user = $this->users->firstWhere('code', $row->toArray()['tanulo_oktatasi_azonosito']);
-        $group = $this->groups->firstWhere('name', $row->toArray()['osztaly_csoport'])->first();
+        $group = $this->groups->firstWhere('name', $row->toArray()['osztaly_csoport']);
         if($group == null){
             //Csoport megszűnt
             //todo: figyelmeztetni az users h lehet h rossz a fájl

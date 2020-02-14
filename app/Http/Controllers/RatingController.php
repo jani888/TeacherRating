@@ -24,12 +24,12 @@ class RatingController extends Controller
 
         foreach ($ratings as $teacher_id => $teacher_ratings){
             $teacher = Teacher::findOrFail($teacher_id);
-            $teacher->increment('rating_count');
             abort_if(!$teacher->groups->contains(function (Group $group){
                 return $group->users()->get()->contains(function (User $user){
                     return $user->id == auth()->user()->id;
                 });
             }), 404);
+            $teacher->increment('rating_count');
 
             foreach ($teacher_ratings as $rating_type_id => $rating){
                 if($rating == '-') continue;
