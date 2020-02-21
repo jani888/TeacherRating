@@ -56,6 +56,8 @@ Route::prefix('admin')->group(function (){
         Route::get('/classes', 'Admin\SchoolClassController@index')->name('admin.classes');
         Route::put('/classes', 'Admin\SchoolClassController@store');
 
+        Route::get('/groups', 'Admin\GroupController@index')->name('admin.groups');
+
         Route::post('/import', 'Admin\ImportController@store');
 
         Route::put('/texts/{key}', 'Admin\TextController@set');

@@ -55,6 +55,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.groups') }}">
+                        <i class="ni ni-compass-04 text-yellow"></i> Csoportok
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.import') }}">
                         <i class="ni ni-cloud-upload-96 text-success"></i> Adatok importálása
                     </a>
