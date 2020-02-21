@@ -42,6 +42,9 @@ class ImportController extends Controller {
             'groups_extension'   => 'required|in:xlsx,xls',
         ]);
         $validator->validate();
+
+        ini_set('MAX_EXECUTION_TIME', 500);
+        ini_set('MEMORY_LIMIT', 500);
         User::truncate();
         Teacher::truncate();
         Group::truncate();
