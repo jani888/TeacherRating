@@ -33,6 +33,7 @@
       }
     </style>
 
+    @stack('custom-css')
 </head>
 <body>
     <main class="main-content">

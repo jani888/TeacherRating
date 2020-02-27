@@ -48,7 +48,7 @@
                                 <tr class="group-row">
                                     <td>{{$group->id}}</td>
                                     <td class="name">{{ $group->name }}</td>
-                                    <td>
+                                    <td class="switch">
                                         <label class="custom-toggle mb-0">
                                             <input class="custom-control-input" id="active_{{ $group->id }}" type="checkbox" name="active[{{ $group->id }}]" @if(true) checked @endif>
                                             <span class="custom-toggle-slider rounded-circle"></span>
@@ -87,7 +87,63 @@
           }else if($("input#filter-radio-contains").prop("checked")){
             $(this).toggle(text.indexOf(value) > -1)
           }
-      });
+        });
       }
+      //Selecting rows from the table
+      $(document).ready(function() {
+
+        /* Get all rows from your 'table' but not the first one
+         * that includes headers. */
+        var rows = $('tr').not(':first');
+
+
+        /* Create 'click' event handler for rows */
+        rows.on('click', function(e) {
+
+          if ($(e.target).is('.custom-toggle-slider') || $(e.target).is('.custom-control-input')){
+            e.stopPropagation();
+            return;
+          }
+          
+          /* Get current row */
+          var row = $(this);
+
+          /* Check if 'Ctrl', 'cmd' or 'Shift' keyboard key was pressed
+           * 'Ctrl' => is represented by 'e.ctrlKey' or 'e.metaKey'
+           * 'Shift' => is represented by 'e.shiftKey' */
+          if ((e.ctrlKey || e.metaKey) || e.shiftKey) {
+            /* If pressed highlight the other row that was clicked */
+            row.addClass('highlight');
+          } else {
+            /* Otherwise just highlight one row and clean others */
+            rows.removeClass('highlight');
+            row.addClass('highlight');
+          }
+
+        });
+
+        /* This 'event' is used just to avoid that the table text
+         * gets selected (just for styling).
+         * For example, when pressing 'Shift' keyboard key and clicking
+         * (without this 'event') the text of the 'table' will be selected.
+         * You can remove it if you want, I just tested this in
+         * Chrome v30.0.1599.69 */
+        $(document).bind('selectstart dragstart', function(e) {
+          e.preventDefault(); return false;
+        });
+
+      });
+
     </script>
+@endpush
+
+@push('custom-css')
+    <style>
+        tr {
+            cursor: default;
+        }
+        .highlight {
+            background: lightgrey;
+        }
+    </style>
 @endpush
