@@ -3,7 +3,7 @@
     <div class="row align-items-center justify-content-xl-center">
       <div class="col-xl-6">
         <div class="copyright text-center text-xl-left text-muted">
-          &copy; {{ \Carbon\Carbon::now()->format("Y") }} <a class="font-weight-bold ml-1" target="_blank">Made <i class="ni ni-favourite-28 text-danger" onclick="$('*').css('animation', 'fa-spin 20s 1 ease-in-out');"></i> by 12P</a>
+          &copy; 2020 <a class="font-weight-bold ml-1" target="_blank">Made <i class="ni ni-favourite-28 text-danger" onclick="$('*').css('animation', 'fa-spin 20s 1 ease-in-out');"></i> by 12P</a>
         </div>
       </div>
       <div class="col-xl-6">
