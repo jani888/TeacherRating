@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
             'password' => bcrypt('admin'),
             'code' => 'admin',
-            'born_at' => '2001.01.01',
+            //'born_at' => '2001.01.01',
             'school_class_id' => $classes->random()->id
         ]);
 

@@ -33,6 +33,10 @@
                                     <input type="radio" id="filter-radio-contains" name="filter-radio" class="custom-control-input" checked>
                                     <label class="custom-control-label" for="filter-radio-contains">Tartalmazza</label>
                                 </div>
+                                <div class="">
+                                    <a id="all-on" class="btn btn-success text-white"> A szűrt-ek bekapcsolása</a>
+                                    <a id="all-off" class="btn btn-warning text-white"> A szűrt-ek kikapcsolása</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -74,6 +78,20 @@
         $("input[name=filter-radio]").on("click", function() {
           filter();
         });
+
+
+        $("#all-on").click(() => {
+          //$("#results-table tr.group-row:visible").children().prop( "checked", true );
+          $("#results-table tr.group-row:visible").each(function() {
+            $(this).find("input[type='checkbox']").prop("checked", true);
+          });
+        });
+        $("#all-off").click(() => {
+          //$("#results-table tr.group-row:visible").children().prop( "checked", true );
+          $("#results-table tr.group-row:visible").each(function() {
+            $(this).find("input[type='checkbox']").prop("checked", false);
+          });
+        });
       });
 
       function filter(){
@@ -113,11 +131,11 @@
            * 'Shift' => is represented by 'e.shiftKey' */
           if ((e.ctrlKey || e.metaKey) || e.shiftKey) {
             /* If pressed highlight the other row that was clicked */
-            row.addClass('highlight');
+            //row.addClass('highlight');
           } else {
             /* Otherwise just highlight one row and clean others */
-            rows.removeClass('highlight');
-            row.addClass('highlight');
+            //rows.removeClass('highlight');
+            //row.addClass('highlight');
           }
 
         });
