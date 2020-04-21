@@ -97,13 +97,13 @@
       function filter(){
         var value = $("#filter-group-name").val().toLowerCase();
         $("#results-table tr.group-row").filter(function() {
-          let text = $(this).children(".name").text();
+          let text = $(this).children(".name").text().toLowerCase();
           if($("input#filter-radio-begins").prop("checked")){
             $(this).toggle(text.startsWith(value));
           }else if($("input#filter-radio-ends").prop("checked")){
             $(this).toggle(text.endsWith(value));
           }else if($("input#filter-radio-contains").prop("checked")){
-            $(this).toggle(text.indexOf(value) > -1)
+            $(this).toggle(text.indexOf(value) > -1);
           }
         });
       }
