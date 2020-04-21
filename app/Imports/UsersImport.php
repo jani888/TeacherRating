@@ -22,15 +22,15 @@ class UsersImport implements ToModel, WithHeadingRow, WithChunkReading, WithProg
     */
     public function model(array $row)
     {
-        $school_class = SchoolClass::where('name', $row['osztaly_csoport'])->first();
+        $school_class = SchoolClass::where('name', $row['osztaly'])->first();
         if($school_class == null){
             //Már kiiratkozott
             return null;
         }
         return new User([
-            'name' => $row['tanulo_neve'],
-            'password' => bcrypt($row['tanulo_oktatasi_azonosito']),
-            'code' => $row['tanulo_oktatasi_azonosito'],
+            'name' => $row['nev'],
+            'password' => bcrypt($row['oktatasi_azonosito']),
+            'code' => $row['oktatasi_azonosito'],
             //'born_at' => $row['szuletesi_ido'],
             'school_class_id' => $school_class->id
         ]);

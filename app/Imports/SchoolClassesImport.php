@@ -21,8 +21,8 @@ class SchoolClassesImport implements OnEachRow, WithHeadingRow, WithChunkReading
      * @param Row $row
      */
     public function onRow(Row $row) {
-        if($row->toArray()['osztaly_csoport'] == null) return;
-        SchoolClass::firstOrCreate(['name' => $row->toArray()['osztaly_csoport']]);
+        if($row->toArray()['osztaly'] == null) return;
+        SchoolClass::firstOrCreate(['name' => $row->toArray()['osztaly']]);
     }
 
     /**

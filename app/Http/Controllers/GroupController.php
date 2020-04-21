@@ -6,7 +6,7 @@ use App\Models\RatingType;
 use App\Models\Text;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class GroupController extends Controller
 {
     /**
      * Create a new controller instance.

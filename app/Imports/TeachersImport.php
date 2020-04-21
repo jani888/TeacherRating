@@ -25,10 +25,10 @@ class TeachersImport implements ToModel, WithChunkReading, WithProgressBar, With
      * @return Model|Model[]|null
      */
     public function model(array $row) {
-        if(Teacher::findByName($row['tanar'])->first() != null){
+        if(Teacher::findByName($row['alkalmazott_neve'])->first() != null){
             return null;
         }
-        return new Teacher(['name' => $row['tanar']]);
+        return new Teacher(['name' => $row['alkalmazott_neve']]);
     }
 
     /**

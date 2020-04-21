@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'active'];
 
     public function teachers() {
         return $this->belongsToMany(Teacher::class);

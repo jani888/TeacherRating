@@ -29,15 +29,13 @@ class GroupController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        Group::query()->update(['active' => false]);
+        foreach($request->active ?? [] as $group_id => $active){
+            Group::find($group_id)->update(['active' => true]);
+        }
+        $request->session()->flash('status', 'success');
+        return back();
     }
 
     /**

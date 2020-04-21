@@ -23,20 +23,11 @@ class GroupsImport implements OnEachRow, WithChunkReading, WithProgressBar, With
      * @param Row $row
      */
     public function onRow(Row $row) {
-        if($row->toArray()['csoport'] == null){
-            $group = Group::firstOrCreate([
-                'name' => $row->toArray()['osztaly']
-            ]);
-            $teacher = Teacher::findByName($row->toArray()['tanar'])->first();
-            $group->teachers()->attach($teacher->id);
-        }else{
-            $group = Group::firstOrCreate([
-                'name' => $row->toArray()['csoport']
-            ]);
-            $teacher = Teacher::findByName($row->toArray()['tanar'])->first();
-            $group->teachers()->attach($teacher->id);
-
-        }
+        $group = Group::firstOrCreate([
+            'name' => $row->toArray()['ozztalycsoport']
+        ]);
+        $teacher = Teacher::findByName($row->toArray()['alkalmazott_neve'])->first();
+        $group->teachers()->attach($teacher->id);
     }
 
     /**

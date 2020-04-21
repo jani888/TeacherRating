@@ -46,10 +46,10 @@ class DeleteDataCommand extends Command {
      * @return mixed
      */
     public function handle() {
-        if(!$this->confirm('Biztos törölni szeretnél minden adatot?')){
+        /*if(!$this->confirm('Biztos törölni szeretnél minden adatot?')){
             $this->warn('Adatok nem kerültek törlésre');
-        }
-
+        }*/
+/*
         $students = User::all();
         $teachers = Teacher::all();
         $groups = Group::all();
@@ -61,7 +61,7 @@ class DeleteDataCommand extends Command {
         $filename = sprintf("database-%s.xlsx", Carbon::now()->format('Ymd-His'));
         Excel::store(new DatabaseExport(collect(compact('students', 'teachers', 'groups', 'classes', 'ratings', 'groupStudent', 'groupTeacher'))), $filename);
         $this->info("Adatbázis elmentve (" . Storage::url($filename) . ")");
-
+*/
         User::truncate();
         Teacher::truncate();
         Group::truncate();
